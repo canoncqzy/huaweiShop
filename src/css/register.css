@@ -1,0 +1,98 @@
+/*重置样式*/
+body,ol,ul,dl,h1,h2,h3,h4,h5,h6,p,th,td,dl,dt,dd,form,fieldset,legend,input,textarea,select,img{margin: 0;padding: 0;box-sizing: border-box;}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: none;vertical-align: middle;}
+body{background: #f0f0f0;}
+
+/*header*/
+.header{
+	height: 66px;
+	background: #333333;
+}
+.header .container{
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
+}
+.header .container img{margin-top: 15px;}
+
+/*switch*/
+.switch{
+	height: 66px;
+}
+.switch .container{
+	width: 960px;
+	height: 100%;
+	margin:  0 auto;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.switch .container i{
+	position: absolute;
+	width: 20px;
+	height: 22px;
+	top: 5px;
+	left: 25px;
+}
+.switch .container .phone{
+	width: 85px;
+	height: 35px;
+	background: #b40707;
+	float: left;
+	margin-top: 31px;
+	position: relative;
+	padding-left: 60px;
+	line-height: 35px;
+}
+.switch .container .phone i{
+	background: url(../img/reg-img01.png) no-repeat 0 -18px;
+}
+.switch .container .email{
+	width: 95px;
+	height: 35px;
+	background: #cccccc;
+	float: left;
+	margin-top: 31px;
+	margin-left: 10px;
+	position: relative;
+	padding-left: 50px;
+	line-height: 35px;
+}
+.switch .container .email i{
+	background: url(../img/reg-img01.png) no-repeat -1px 4px;
+}
+.switch .container p{
+	float: right;
+	height: 38px;
+	line-height: 38px;
+	font-size: 14px;
+	margin-top: 30px;
+	color: #333333;
+}
+.switch .container p a{
+	margin-left: 5px;
+	color: #4b8ffb;
+}
+
+/*content*/
+.content{
+	height: 525px;
+}
+.content .container{
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
+	background: #FFFFFF;
+}
+
+/*footer*/
+.footer{
+	height: 197px;
+}
+.footer .container{
+	width: 960px;
+	height: 100%;
+	margin:  40px auto;
+	border-top: 1px solid #d7d7d7;
+}
