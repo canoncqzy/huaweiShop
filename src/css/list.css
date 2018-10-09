@@ -1,0 +1,105 @@
+body{background: #FFFFFF;}
+/*content*/
+.content{
+	border-top: 5px solid #e9e9e9;
+}
+.content .container{
+	width: 1200px;
+	margin: 0 auto;
+}
+.content .container .title{
+	height: 43px;
+	line-height: 43px;
+	font-size: 12px;
+}
+.content .container .title a{color: #666666;}
+.content .container .title i{
+	display: inline-block;
+	width: 22px;
+	height: 14px;
+	background: url(/img/detail_right.jpg) no-repeat center;
+}
+.content .container .tags{
+	font-size: 12px;
+	color: #999999;
+}
+.content .container .tags a{
+	color: #999999;
+}
+.content .container .tags .kind ul{
+	line-height: 49px;
+	height: 50px;
+	border: 1px solid #dedede;
+	padding-left: 30px;
+}
+.content .container .tags .kind ul li{
+	float: left;
+	margin-left: 20px;
+}
+.content .container .tags .sort ul{
+	height: 50px;
+	border: 1px solid #dedede;
+	border-top: none;
+	line-height: 50px;
+	padding-left: 30px;
+}
+.content .container .tags .sort ul li{
+	float: left;
+	margin-left: 20px;
+}
+.content .container .list{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.content .container .list .box{
+	width: 225px;
+	height: 365px;
+	border: 1px solid #dedede;
+	margin-top: 20px;
+	cursor: pointer;
+	text-align: center;
+}
+.content .container .list .box:hover{border:1px solid #e01d20}
+.content .container .list .box .img{
+	width: 180px;
+	height: 140px;
+	background: #CCCCCC;
+	margin: 0 auto;
+	margin-top: 60px;
+	margin-bottom: 37px;
+	
+}
+.content .container .list .box .name{
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #666666;
+}
+.content .container .list .box .desc{
+	font-size: 12px;
+	color: #ca141d;
+}
+.content .container .list .box .price{
+	height: 35px;
+	line-height: 35px;
+	font-size: 15px;
+	color: #e01d20;
+}
+.content .container .list .box .bottom a{
+	float: left;
+	width: 112px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #dedede;
+	border-bottom: none;
+	margin-top: 17px;
+}
+.content .container .list .box .bottom a:hover{color: #e01d20;}
+.content .container .list .box .bottom a:first-of-type{
+	border-left: none;
+	border-right: none;
+}
+.content .container .list .box .bottom a:last-of-type{border-right: none;}

@@ -1,0 +1,137 @@
+/*重置样式*/
+body,ol,ul,dl,h1,h2,h3,h4,h5,h6,p,th,td,dl,dt,dd,form,fieldset,legend,input,textarea,select,img{margin: 0;padding: 0;box-sizing: border-box;}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: none;vertical-align: middle;}
+body{background: #ebebeb;}
+
+/*header*/
+.header{
+	height: 68px;
+}
+.header .container{
+	width: 1130px;
+	height: 100%;
+	margin: 0 auto;
+}
+.header .container .logo{
+	width: 276px;
+	height: 42px;
+	background: url(/img/login_logo.jpg) no-repeat;
+	margin-top: 14px;
+	margin-left: 70px;
+}
+/*content*/
+.content{
+	height: 590px;
+	background: url(/img/login_default_bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+.content .container{
+	width: 1130px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+.content .container .box{
+	width: 380px;
+	height: 530px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 30px;
+	right: 0;
+}
+.content .container .box .switch{
+	font-size: 18px;
+	color: #CCCCCC;
+}
+.content .container .box .switch a{
+	display: inline-block;
+	width: 187px;
+	height: 70px;
+	text-align: center;
+	line-height: 70px;
+	color: #333333;
+	cursor: pointer;
+}
+.content .container .box .switch a:first-of-type{color: #b40707;}
+.content .container .box form{
+	width: 330px;
+	margin-top: 13px;
+	margin-left: 25px;
+}
+.content .container .box form .log_input{
+	width: 330px;
+	height: 47px;
+	border: none;
+	border-bottom: 1px solid #CCCCCC;
+	outline: none;
+}
+.content .container .box form .text_conf{
+	height: 47px;
+	font-size: 12px;
+	color: #007dff;
+	cursor: pointer;
+	line-height: 47px;
+	position: relative;
+	padding-left: 20px;
+}
+.content .container .box form .text_conf i{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: 15px;
+	left: 0;
+	background: url(/img/ic_smsLogin.png) no-repeat;
+}
+.content .container .box form .logo_sub{
+	width: 330px;
+	height: 45px;
+	background: #b40707;
+	color: #FFFFFF;
+	font-size: 13px;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 45px;
+	border-radius: 25px;
+}
+.content .container .box form .remenber{
+	height: 50px;
+	line-height: 50px;
+	font-size: 12px;
+	color: #333333;
+}
+.content .container .box form .remenber a{
+	float: right;
+	color: #007dff;
+	
+}
+.content .container .box form .reg_forget{
+	width: 330px;
+	text-align: center;
+	font-size: 12px;
+	color: #CCCCCC;
+}
+.content .container .box form .reg_forget a{
+	color: #007dff;
+	padding:10px;
+}
+/*footer*/
+.footer{
+	height: 197px;
+	margin-top: 20px; 
+}
+.footer .container{
+	width: 1130px;
+	height: 172px;
+	margin:  0 auto;
+}
+.footer .container p{
+	width: 1130px;
+	text-align: center;
+	font-size: 12px;
+	color: #999999;
+	margin-top: 10px;
+}
+.footer .container p a{color: #999999;margin:0 10px;}

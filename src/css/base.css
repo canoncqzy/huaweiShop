@@ -82,7 +82,7 @@ body{background: #f0f0f0;}
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-	background: url(../img/icon-common.png) no-repeat 0px 0px;
+	background: url(/img/icon-common.png) no-repeat 0px 0px;
 }
 .shotcut .container .right ul li:last-child a i{
 	padding-left: 5px;
@@ -111,7 +111,7 @@ body{background: #f0f0f0;}
 	width: 240px;
 	height: 50px;
 	float: left;
-	background: url(../img/logo20170801113951.png) no-repeat center;
+	background: url(/img/logo20170801113951.png) no-repeat center;
 }
 .header .container .layout .left .img a{
 	display: inline-block;
@@ -157,7 +157,7 @@ body{background: #f0f0f0;}
 	float: left;
 	width: 30px;
 	height: 30px;
-	background: url(../img/icon-common.png) no-repeat 4px -19px;
+	background: url(/img/icon-common.png) no-repeat 4px -19px;
 	cursor: pointer;
 }
 .header .container .layout .right .suggest{
@@ -262,7 +262,7 @@ body{background: #f0f0f0;}
 	display: inline-block;
 	width: 22px;
 	height: 22px;
-	background: url(../img/icon-common.png) no-repeat -101px -22px;
+	background: url(/img/icon-common.png) no-repeat -101px -22px;
 	position: absolute;
 	top: 10px;
 	left: 40px;

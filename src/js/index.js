@@ -1,6 +1,72 @@
 require(["config"],function(){
 	require(["jquery","header"],function($){
-		
+		function Index(){
+			this.showNavWindow();
+		}
+		Index.prototype={
+			constructor:Index,
+			showNavWindow:function(){
+				//绑定监听事件
+				this.addListener();
+			},
+			addListener:function(){
+				//绑定鼠标移入li监听事件
+				$("#nav-left").on("mouseenter","li",this.navEnter);
+				//绑定鼠标移出li监听事件
+				$("#nav-left").on("mouseleave","li",this.navLeave);
+			},
+			navEnter:function(){
+				//获取当前li中ID
+				var _id = $(this).find(".id").text();
+				//字符串拼接二级菜单元素ID名
+				var elem = "#nav-window"+_id;
+				$(elem).show();
+				//绑定鼠标移入nav-window监听事件
+				$(elem).mouseenter(function(){
+					$(this).show();
+				});
+				//ajax获取数据
+				$.ajax({
+					type:"get",
+					url:"http://rap2api.taobao.org/app/mock/86514/nav",
+					success:function(data){
+						data.res_body.info.forEach(curr=>{
+							if(curr.id==_id){
+								//字符串拼接二级菜单商品列表id
+								var list = "#nav-window-bottom-list"+_id;
+								//遍历显示商品列表信息
+								var html_list = "";
+								curr.product.forEach(curr=>{
+									html_list+=`<a href="/html/detail.html">
+													<li>
+														<div class="pic"><img src="${curr.img}"/></div>
+														<p>${curr.name}</p>
+														<p><span>￥${curr.price}</span></p>
+													</li>
+												</a>`;
+								});
+								$(list).html(html_list);
+							}
+						});
+					}
+				});
+			},
+			navLeave:function(){
+				//获取当前li中ID
+				var _id = $(this).find(".id").text();
+				//字符串拼接二级菜单元素ID名
+				var elem = "#nav-window"+_id;
+				$(elem).hide();
+				//绑定鼠标移出nav-window监听事件
+				$(elem).mouseleave(function(){
+					$(this).hide();
+				});
+			},
+			banner:function(){
+				
+			}
+		}
+		new Index();
 	})
 });
 
@@ -65,59 +131,5 @@ require(["config"],function(){
 //		nextIndex = index;
 //		//调用move()
 //		move();
-//	}
-//}
-///*============================================================================================*/
-////左边导航鼠标移入显示目录，事件委派
-//var lis = $("li",$("#nav-left"));
-//for (let i=0;i<lis.length;i++) {
-//	//鼠标进入li触发事件
-//	lis[i].onmouseenter=function(){
-//		//获取当前li中ID
-//		var _id = Number(lis[i].firstElementChild.innerText);
-//		//字符串拼接二级菜单元素ID名
-//		var elem = "#nav-window"+_id;
-//		//设置显示
-//		$(elem).style.display="block";
-//		$(elem).onmouseenter = function(){
-//			$(elem).style.display="block";
-//		}
-//		//ajax获取数据
-//		ajax({
-//			url:"http://rap2api.taobao.org/app/mock/86514/nav",
-//			dataType:"json",
-//			success:function(data){
-//				if(data.res_code===1){
-//					//遍历匹配id
-//					data.res_body.info.forEach(curr=>{
-//						if(curr.id===_id){
-//							//字符串拼接二级菜单商品列表id
-//							var list = "#nav-window-bottom-list"+_id;
-//							//遍历显示商品列表信息
-//							var html_list = "";
-//							curr.product.forEach(curr=>{
-//								html_list+=`<a href="#">
-//												<li>
-//													<div class="pic"><img src="${curr.img}"/></div>
-//													<p>${curr.name}</p>
-//													<p><span>￥${curr.price}</span></p>
-//												</li>
-//											</a>`;
-//							});
-//							$(list).innerHTML = html_list;
-//						}
-//					});
-//				}
-//			}
-//		});
-//	}
-//	//鼠标移出li触发事件
-//	lis[i].onmouseleave=function(){
-//		var _id = Number(lis[i].firstElementChild.innerText);
-//		var elem = "#nav-window"+_id;
-//		$(elem).style.display="none";//设置隐藏
-//		$(elem).onmouseleave = function(e){
-//			$(elem).style.display="none";
-//		}
 //	}
 //}
