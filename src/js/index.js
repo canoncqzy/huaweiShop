@@ -66,70 +66,95 @@ require(["config"],function(){
 				
 			}
 		}
+		//banner轮播
+		function Banner(){
+			this.lis = null; // 所有轮播的图片盒子
+			this.circles = null; // 所有小圆
+			this.currentIndex = 0; // 当前正显示的图片索引
+			this.nextIndex = 1; // 即将显示图片的索引
+			this.length = 1;
+			
+			this.creCircle();
+			this.getEls();
+			this.move();
+			this.autoPlay();
+			this.addListener();
+		}
+		Banner.prototype = {
+			constructor:Banner,
+			creCircle:function(){
+				//获取图片张数
+				this.length = $("li",".banner").length;
+				//生成小圆点
+				var html="";
+				for (var i=0;i<this.length;i++) {
+					html+=`<span class="current"></span>`;
+				}
+				//渲染
+				$(".circle",".banner").html(html);
+				//默认第一个小圆点
+				$("span:first",".circle").css("background","#999999");
+			},
+			// 获取创建元素
+			getEls: function() {
+				this.lis = $("li",".banner"); // 所有轮播的图片盒子
+				this.circles = $("span",".circle"); // 所有小圆
+			},
+			// 自动轮播
+			autoPlay:function(){
+				this.timer = setInterval($.proxy(this.move, this),3000);
+			},
+			// 轮播切换
+			move: function() {
+				// 当前显示的图片淡出
+				$(this.lis[this.currentIndex]).fadeOut();
+				// 即将显示的图片淡入
+				$(this.lis[this.nextIndex]).fadeIn();
+				// 修改小圆样式
+				// 当前的小圆点去掉 "灰色" 样式
+				$(this.circles[this.currentIndex]).css({background: "#fff"});
+				// 即将显示的图片对应小圆点添加 "灰色" 样式
+				$(this.circles[this.nextIndex]).css({background: "#999999"});
+	
+				// 修改显示图片索引
+				this.currentIndex = this.nextIndex;
+				this.nextIndex++;
+				if (this.nextIndex >= this.length) // 超过最后一张图片的索引，则还原为0
+					this.nextIndex = 0;
+			},
+			// 添加事件监听
+			addListener: function() {
+				// 鼠标移入移出容器
+				$(".banner").hover($.proxy(this.enterHandler, this), $.proxy(this.leaveHandler, this));
+				// 鼠标移入小圆点
+				this.circles.on("mouseover", $.proxy(this.overHandler, this));
+			},
+			// 鼠标移入容器处理
+			enterHandler: function() {
+				clearInterval(this.timer);
+			},
+			// 鼠标移出容器处理
+			leaveHandler: function() {
+				this.autoPlay();
+			},
+			// 鼠标移入小圆点处理
+			overHandler: function(event) {
+				// 获取鼠标移入的小圆点索引
+				var index = $(event.target).index();
+				// 判断当前显示图片是否为所选中小圆点对应的图片
+				if (index === this.currentIndex) // 是，则不用切换，结束函数执行
+					return;
+				// 将当前小圆点的索引设置为即将显示图片的索引
+				this.nextIndex = index;
+				// 调用 move() 切换
+				this.move();
+			},
+		}
 		new Index();
+		new Banner();
 	})
 });
 
 
 
 
-//banner轮播
-//var banners = $("li",$(".banner")[0]),//所有图片盒子
-//	lenght = banners.length,//图片张数
-//	currentIndex = 0,//当前图片索引
-//	nextIndex = 1,//下一张图片索引
-//	circles = $("span",$(".circle")[0]);//圆点
-//
-////生成小圆点个数
-//var html="";
-//for (var i=0;i<banners.length;i++) {
-//	html+=`<span class="current"></span>`;
-//}
-////显示小圆点
-//$(".circle")[0].innerHTML = html;
-////默认为第一个小圆点
-//circles[0].style.opacity=1;
-//
-////图片轮播切换函数
-//function move(){
-//	//当前显示图片淡出
-//	fadeOut(banners[currentIndex],300);
-//	//下一张图片淡入
-//	fadeIn(banners[nextIndex],300);
-//	//修改小圆点样式
-//	circles[currentIndex].style.opacity=0.3;
-//	circles[nextIndex].style.opacity=1;
-//	//修改显示图片索引
-//	currentIndex = nextIndex;
-//	nextIndex ++;
-//	if(nextIndex >= lenght)
-//		nextIndex = 0;
-//}
-////自动轮播
-//var timer = setInterval(move,3000);
-//
-////鼠标移入停止/重启计时器
-//$(".banner")[0].onmouseenter=function(){
-//	clearInterval(timer);
-//}
-//$(".banner")[0].onmouseleave=function(){
-//	timer = setInterval(move,3000);
-//}
-//
-////鼠标移入小圆点,移动相应图片
-////事件委派
-//$(".circle")[0].onmouseover=function(event){
-//	//事件源
-//	var src = event.target;
-//	if(src.nodeName==="SPAN"){
-//		//获取当前移入小圆点坐标
-//		var index = Array.from(circles).indexOf(src);
-//		//判断当前下标是否一样
-//		if(index===currentIndex)
-//			return;
-//		//将当前下标赋给下一张图片坐标
-//		nextIndex = index;
-//		//调用move()
-//		move();
-//	}
-//}

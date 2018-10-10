@@ -5,6 +5,8 @@
 		<title>首页</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="lib/jquery/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/lib/jquery-plugins/jquery.carousel.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<!--header-->
@@ -401,7 +403,7 @@
 		<!--advertise-->
 		<div class="advertise">
 			<div class="advertise-container">
-				<ul class="advertise-ul">
+				<!--<ul class="advertise-ul">
 					<li style="display: block;"><a href="#"><img src="img/2018062214341386.jpg" alt="" /></a></li>
 					<li><a href="#"><img src="img/20180718084432792.jpg" alt="" /></a></li>
 					<li><a href="#"><img src="img/20180824093821954.png" alt="" /></a></li>
@@ -411,8 +413,26 @@
 				</ul>
 				<div class="circle">
 					<span></span><span></span><span></span>
-				</div>
-		</div>
+				</div>-->
+			</div>
+		</div>	
+		<!--广告轮播图-->
+		<script type="text/javascript">
+			$(".advertise-container").carousel({
+				imgs:[
+					{href:"#",src:"/img/20180718084432792.jpg"},
+					{href:"#",src:"/img/20180824093821954.png"},
+					{href:"#",src:"/img/20180913163850512.jpg"},
+					{href:"#",src:"/img/20180930092027460.jpg"},
+					{href:"#",src:"/img/20180930092036356.jpg"},
+				],
+				width: 1200,
+				height: 120,
+				duration: 3000,
+				needTurnPage: false,
+				circlePosition: "right"
+			});
+		</script>
 		<!--phone-->
 		<div class="phone">
 			<div class="container">

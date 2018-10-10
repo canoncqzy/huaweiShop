@@ -146,12 +146,11 @@
 }
 .banner .circle span{
 	display: inline-block;
-	background: gray;
+	background: #FFFFFF;
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
 	margin-left: 10px;
-	opacity: 0.2;
 }
 
 /*promo*/
@@ -324,8 +323,9 @@
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
+	margin-top: 20px;
 }
-.advertise .advertise-container .advertise-ul{
+/*.advertise .advertise-container .advertise-ul{
 	height: 120px;
 	width: 100%;
 	margin-top: 20px;
@@ -347,7 +347,7 @@
 	border-radius: 50%;
 	margin-left: 5px;
 	opacity: 0.5;
-}
+}*/
 /*phone*/
 .phone{
 	height: 1130px;
