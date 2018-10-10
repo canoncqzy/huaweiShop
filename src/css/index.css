@@ -249,6 +249,7 @@
 .competitive .container .box ul{
 	height: 290px;
 	width: 1500px;
+	position: absolute;
 }
 .competitive .container .box ul li{
 	width: 220px;

@@ -61,9 +61,6 @@ require(["config"],function(){
 				$(elem).mouseleave(function(){
 					$(this).hide();
 				});
-			},
-			banner:function(){
-				
 			}
 		}
 		//banner轮播
@@ -148,8 +145,54 @@ require(["config"],function(){
 				this.nextIndex = index;
 				// 调用 move() 切换
 				this.move();
-			},
+			}
 		}
+
+		// 商品推荐
+		function Recommend(){
+			//绑定监听事件
+			this.addListener();
+			//渲染推荐商品
+			this.load();	
+		}
+		Recommend.prototype={
+			constructor:Recommend,
+			//渲染显示推荐商品
+			load:function(){
+				//ajax获取数据
+				$.ajax({
+					type:"get",
+					url:"http://rap2api.taobao.org/app/mock/86514/recommend",
+					success:function(data){
+						var html = " ";
+						data.res_body.forEach(curr=>{
+							html += ` <a href="#">
+										<li>
+											<div class="pic"><img src="${curr.img}"/></div>
+											<p>${curr.title}</p>
+											<p>${curr.desc}</p>
+											<p><span>￥${curr.price}</span></p>
+										</li>
+									</a> `;
+						});
+						$("ul",".box").html(html);
+					}
+				});
+			},
+			//绑定监听事件
+			addListener:function(){
+				$(".right",".forward").click(this.forwardHandler);
+			},
+			//点击翻页
+			forwardHandler:function(){
+				console.log($(this).parent().siblings("ul"));
+				$(this).parent().siblings("ul").css({
+					"left":-800,
+					"position":"absolute"
+				});
+			}
+		}	
+		new Recommend();
 		new Index();
 		new Banner();
 	})
