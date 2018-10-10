@@ -3,11 +3,154 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/cart.css"/>
 	</head>
 	<body>
 		<!--header-->
 		<header></header>
+		<!--content-->
+		<div class="content">
+			<div class="container">
+				<div class="empty">
+					<div class="wrap">
+						<span></span>
+						<p>您的购物车里什么也没有哦~</p>
+						<a href="/index.html">去逛逛</a>
+					</div>
+				</div>
+				<div class="not-empty">
+					<div class="top">
+						<span><input type="checkbox" name="" id="total1"/><label for="total1">全选</label></span>
+						<ul>
+							<li>商品</li>
+							<li>单价</li>
+							<li>数量</li>
+							<li>小计</li>
+							<li>操作</li>
+						</ul>
+					</div>
+					<div class="prod-list">
+						<span><input type="checkbox" /></span>
+						<ul>
+							<li><img src="/img/navwindow1.jpg"/>HUAWEI p20 6GB+64GB 全网通版(极光色)</li>
+							<li>￥3388.00</li>
+							<li>
+								<div class="box">
+									<input type="text" value="1"/>
+									<i>+</i>
+									<i>-</i>
+								</div>
+							</li>
+							<li>￥3388.00</li>
+							<li><a href="javascript:void(0);">删除</a></li>
+						</ul>
+					</div>
+					<div class="prod-list">
+						<span><input type="checkbox" /></span>
+						<ul>
+							<li><img src="/img/navwindow1.jpg"/>HUAWEI p20 6GB+64GB 全网通版(极光色)</li>
+							<li>￥3388.00</li>
+							<li>
+								<div class="box">
+									<input type="text" value="1"/>
+									<i>+</i>
+									<i>-</i>
+								</div>
+							</li>
+							<li>￥3388.00</li>
+							<li><a href="javascript:void(0);">删除</a></li>
+						</ul>
+					</div>
+					<div class="prod-list">
+						<span><input type="checkbox" /></span>
+						<ul>
+							<li><img src="/img/navwindow1.jpg"/>HUAWEI p20 6GB+64GB 全网通版(极光色)</li>
+							<li>￥3388.00</li>
+							<li>
+								<div class="box">
+									<input type="text" value="1"/>
+									<i>+</i>
+									<i>-</i>
+								</div>
+							</li>
+							<li>￥3388.00</li>
+							<li><a href="javascript:void(0);">删除</a></li>
+						</ul>
+					</div>
+					<div class="bottom">
+						<span><input type="checkbox" id="total2" /><label for="total2">全选</label><a href="javascript:void(0);">删除</a></span>
+						<a href="#" class="pay">立即结算</a>
+						<div class="total">
+							<p>总计：<b>￥0.00</b></p>
+							<p>已选择<b>1</b>件商品</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<!--hot-reg-->
+		<div class="hot-reg">
+			<div class="container">
+				<div class="title">
+					<h2>热销推荐</h2>
+				</div>
+				<div class="box">
+					<ul>
+						<a href="#">
+							<li>
+								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
+								<p>荣耀10</p>
+								<p><span>￥2299</span></p>
+							</li>
+						</a>
+						<a href="#">
+							<li>
+								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
+								<p>荣耀10</p>
+								<p><span>￥2299</span></p>
+							</li>
+						</a>
+						<a href="#">
+							<li>
+								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
+								<p>荣耀10</p>
+								<p><span>￥2299</span></p>
+							</li>
+						</a>
+						<a href="#">
+							<li>
+								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
+								<p>荣耀10</p>
+								<p><span>￥2299</span></p>
+							</li>
+						</a>
+						<a href="#">
+							<li>
+								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
+								<p>荣耀10</p>
+								<p><span>￥2299</span></p>
+							</li>
+						</a>
+						<a href="#">
+							<li>
+								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
+								<p>荣耀10</p>
+								<p><span>￥2299</span></p>
+							</li>
+						</a>
+					</ul>
+					<div class="forward">
+						<div class="right"></div>
+					</div>
+					<div class="backwards">
+						<div class="left"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!--footer-->
 		<footer></footer>
 		<script src="/lib/requirejs/require.js" data-main = "/js/cart" type="text/javascript" charset="utf-8"></script>
