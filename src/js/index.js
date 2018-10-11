@@ -1,7 +1,10 @@
 require(["config"],function(){
-	require(["jquery","header"],function($){
+	require(["jquery","template","header","carousel"],function($,template){
 		function Index(){
 			this.showNavWindow();
+			this.loadBanner();
+			this.loadRecommend();
+			this.toTop();
 		}
 		Index.prototype={
 			constructor:Index,
@@ -61,8 +64,72 @@ require(["config"],function(){
 				$(elem).mouseleave(function(){
 					$(this).hide();
 				});
+			},
+			loadBanner:function(){
+				$(".advertise-container").carousel({
+					imgs:[
+						{href:"#",src:"/img/20180718084432792.jpg"},
+						{href:"#",src:"/img/20180824093821954.png"},
+						{href:"#",src:"/img/20180913163850512.jpg"},
+						{href:"#",src:"/img/20180930092027460.jpg"},
+						{href:"#",src:"/img/20180930092036356.jpg"},
+					],
+					width: 1200,
+					height: 120,
+					duration: 3000,
+					needTurnPage: false,
+					circlePosition: "right"
+				});
+			},
+			loadRecommend:function(){
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/competitiveRecommend")
+					.done($.proxy(this.handleCompetitiveData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/watchRecommend")
+					.done($.proxy(this.handleWatchData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/houseRecommend")
+					.done($.proxy(this.handleHouseData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/partsRecommend")
+					.done($.proxy(this.handlePartsData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/brandPartsRecommend")
+					.done($.proxy(this.handleBrandData, this));
+			},
+			handleCompetitiveData:function(data){
+				// 渲染
+				var html = template("competitive-recommend-template", data);
+				$("ul",".competitive-box").prepend(html);
+			},
+			handleWatchData:function(data){
+				// 渲染
+				var html = template("watch-recommend-template", data);
+				$("ul",".watch-box").prepend(html);
+			},
+			handleHouseData:function(data){
+				// 渲染
+				var html = template("house-recommend-template", data);
+				$("ul",".house-box").prepend(html);
+			},
+			handlePartsData:function(data){
+				// 渲染
+				var html = template("parts-recommend-template", data);
+				$("ul",".parts-box").prepend(html);
+			},
+			handleBrandData:function(data){
+				// 渲染
+				var html = template("brand-parts-recommend-template", data);
+				$("ul",".brand-parts-box").prepend(html);
+			},
+			toTop:function(){
+				$(window).scroll(function(){
+					var top = $(window).scrollTop();
+					if(top>=1500){
+						$("a",".toTop").show()
+					}else{
+						$("a",".toTop").hide();
+					}
+				});
 			}
 		}
+		new Index();
 		//banner轮播
 		function Banner(){
 			this.lis = null; // 所有轮播的图片盒子
@@ -147,53 +214,6 @@ require(["config"],function(){
 				this.move();
 			}
 		}
-
-		// 商品推荐
-		function Recommend(){
-			//绑定监听事件
-			this.addListener();
-			//渲染推荐商品
-			this.load();	
-		}
-		Recommend.prototype={
-			constructor:Recommend,
-			//渲染显示推荐商品
-			load:function(){
-				//ajax获取数据
-				$.ajax({
-					type:"get",
-					url:"http://rap2api.taobao.org/app/mock/86514/recommend",
-					success:function(data){
-						var html = " ";
-						data.res_body.forEach(curr=>{
-							html += ` <a href="#">
-										<li>
-											<div class="pic"><img src="${curr.img}"/></div>
-											<p>${curr.title}</p>
-											<p>${curr.desc}</p>
-											<p><span>￥${curr.price}</span></p>
-										</li>
-									</a> `;
-						});
-						$("ul",".box").html(html);
-					}
-				});
-			},
-			//绑定监听事件
-			addListener:function(){
-				$(".right",".forward").click(this.forwardHandler);
-			},
-			//点击翻页
-			forwardHandler:function(){
-				console.log($(this).parent().siblings("ul"));
-				$(this).parent().siblings("ul").css({
-					"left":-800,
-					"position":"absolute"
-				});
-			}
-		}	
-		new Recommend();
-		new Index();
 		new Banner();
 	})
 });

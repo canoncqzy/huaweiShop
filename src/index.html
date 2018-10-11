@@ -3,10 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>首页</title>
+		<link rel="icon" href="/img/logo-icon.jpg" type="image/x-icon"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<script src="lib/jquery/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/lib/jquery-plugins/jquery.carousel.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<!--header-->
@@ -324,7 +323,7 @@
 				<div class="title">
 					<h2>精品推荐</h2>
 				</div>
-				<div class="box">
+				<div class="box competitive-box">
 					<ul></ul>
 					<div class="forward">
 						<div class="right"></div>
@@ -335,6 +334,19 @@
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="competitive-recommend-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--advertise-->
 		<div class="advertise">
 			<div class="advertise-container">
@@ -351,23 +363,6 @@
 				</div>-->
 			</div>
 		</div>	
-		<!--广告轮播图-->
-		<script type="text/javascript">
-			$(".advertise-container").carousel({
-				imgs:[
-					{href:"#",src:"/img/20180718084432792.jpg"},
-					{href:"#",src:"/img/20180824093821954.png"},
-					{href:"#",src:"/img/20180913163850512.jpg"},
-					{href:"#",src:"/img/20180930092027460.jpg"},
-					{href:"#",src:"/img/20180930092036356.jpg"},
-				],
-				width: 1200,
-				height: 120,
-				duration: 3000,
-				needTurnPage: false,
-				circlePosition: "right"
-			});
-		</script>
 		<!--phone-->
 		<div class="phone">
 			<div class="container">
@@ -708,7 +703,7 @@
 		<!--watch-box-->
 		<div class="watch-box">
 			<div class="container">
-				<div class="box">
+				<div class="box watch-box">
 					<ul></ul>
 					<div class="forward">
 						<div class="right"></div>
@@ -719,6 +714,19 @@
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="watch-recommend-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--house-->
 		<div class="house watch slab noteBook phone">
 			<div class="container">
@@ -803,7 +811,7 @@
 		<!--house-box-->
 		<div class="house-box watch-box">
 			<div class="container">
-				<div class="box">
+				<div class="box house-box">
 					<ul></ul>
 					<div class="forward">
 						<div class="right"></div>
@@ -814,6 +822,19 @@
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="house-recommend-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--parts-->
 		<div class="parts house watch slab noteBook phone">
 			<div class="container">
@@ -892,7 +913,7 @@
 		<!--parts-box-->
 		<div class="parts-box house-box watch-box">
 			<div class="container">
-				<div class="box">
+				<div class="box parts-box">
 					<ul></ul>
 					<div class="forward">
 						<div class="right"></div>
@@ -903,6 +924,19 @@
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="parts-recommend-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--brand-parts-->
 		<div class="parts house watch slab noteBook phone">
 			<div class="container">
@@ -981,7 +1015,7 @@
 		<!--brand-parts-box-->
 		<div class="parts-box house-box watch-box">
 			<div class="container">
-				<div class="box">
+				<div class="box brand-parts-box">
 					<ul></ul>
 					<div class="forward">
 						<div class="right"></div>
@@ -992,8 +1026,25 @@
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="brand-parts-recommend-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--footer-->
 		<footer></footer>
+		<!--toTop-->
+		<div class="toTop">
+			<a href="#" title="返回顶部"></a>
+		</div>
 		<script src="/lib/requirejs/require.js" data-main = "/js/index" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

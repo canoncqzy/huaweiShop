@@ -1,5 +1,5 @@
 require(["config"],function(){
-	require(["jquery","header"],function($){
+	require(["jquery","cartHeader"],function($){
 		
 	})
 })

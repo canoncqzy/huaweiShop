@@ -3,7 +3,8 @@ const gulp = require("gulp"),
 	uglify = require("gulp-uglify"),
 	htmlmin = require("gulp-htmlmin"),
 	babel = require("gulp-babel"),
-	connect = require("gulp-connect");
+	connect = require("gulp-connect"),
+	sass = require("gulp-sass");
 
 // 压缩CSS
 gulp.task("css", ()=>{
@@ -32,6 +33,14 @@ gulp.task("html", ()=>{
 		.pipe(connect.reload());
 });
 
+// 定制任务：编译sass
+gulp.task("sass", function() {
+	gulp.src("src/scss/*.scss")
+		.pipe(sass({outputStyle: "expanded"}))
+		.pipe(gulp.dest("dist/css"))
+		.pipe(connect.reload());
+});
+
 // 复制任务
 gulp.task("copy-img", ()=>{
 	gulp.src("src/img/**/*.*")
@@ -56,7 +65,7 @@ gulp.task("watch", ()=>{
 	gulp.watch("src/css/*.css", ["css"]);
 	gulp.watch("src/js/*.js", ["js"]);
 	gulp.watch("src/**/*.html", ["html"]);
+	gulp.watch("src/scss/*.scss", ["sass"]);
 });
-
 // 默认、缺省任务
-gulp.task("default", ["css", "js", "html", "copy", "webserver", "watch"]);
+gulp.task("default", ["css", "js", "html", "sass", "copy", "webserver", "watch"]);

@@ -494,3 +494,17 @@
     opacity: 0.5;
 }
 .watch-box .container .box .backwards:hover .left{opacity: 1;}
+/*toTop*/
+.toTop a{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 50px;
+	position: fixed;
+	bottom: 50px;
+	right: 0;
+	display: none;
+	background:#474747 url(/img/titop.jpg) no-repeat center;
+}

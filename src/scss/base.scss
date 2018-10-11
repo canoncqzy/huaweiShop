@@ -6,89 +6,87 @@ img{border: none;vertical-align: middle;}
 body{background: #f0f0f0;}
 /*shotcut*/
 .shotcut{
+    background: #FFFFFF;
 	height: 30px;
-}
-.shotcut .container{
-	width: 1200px;
-	height: 100%;
-	margin: 0 auto;
-}
-.shotcut .container .left{
-	float: left;
-}
-.shotcut .container .left ul li{
-	font-size: 13px;
-	text-align: center;
-	line-height: 30px;
-	float: left;
-	padding: 0 8px;
-	position: relative;
-}
-.shotcut .container .left ul li:hover a{color: #ed0213;}
-.shotcut .container .left ul li:first-child{padding-left: 0;}
-.shotcut .container .left ul li:first-child:before{content: "";width: 0;}
-.shotcut .container .left ul li:before{
-	content: "";
-	width: 1px;
-	height: 10px;
-	display: block;
-	position: absolute;
-	top: 10px;
-	left: 2px;
-	background: #e4e4e4;
-}
-.shotcut .container .left ul li:nth-last-child(1),.shotcut .container .left ul li:nth-last-child(2){
-	padding-right: 18px;
-}
-.shotcut .container .left ul li:nth-last-child(1):after,.shotcut .container .left ul li:nth-last-child(2) a:after{
-	content: "";
-	position: absolute;
-	border-top: 6px solid #999999;
-	border-left: 6px solid #f0f0f0;
-	border-bottom: 6px solid #f0f0f0;
-	border-right: 6px solid #f0f0f0;
-	right: 0px;
-	top: 12px;
-}
-.shotcut .container .left ul li a{color: #a4a4a4;}
-.shotcut .container .right{
-	float: right;
-}
-.shotcut .container .right ul li{
-	font-size: 13px;
-	text-align: center;
-	line-height: 30px;
-	float: left;
-	padding: 0 8px;
-	position: relative;
-}
-.shotcut .container .right ul li:hover a{color: #ed0213;}
-.shotcut .container .right ul li a{color: #a4a4a4;}
-.shotcut .container .right ul li:before{
-	content: "";
-	width: 1px;
-	height: 10px;
-	display: block;
-	position: absolute;
-	top: 10px;
-	left: 0px;
-	background: #e4e4e4;
-}
-.shotcut .container .right ul li:nth-child(1):before,.shotcut .container .right ul li:nth-child(2):before{
-	content: "";
-	width: 0px;
-}
-.shotcut .container .right ul li i{
-	display: inline-block;
-	width: 14px;
-	height: 14px;
-	background: url(/img/icon-common.png) no-repeat 0px 0px;
-}
-.shotcut .container .right ul li:last-child a i{
-	padding-left: 5px;
+    	.container{
+            width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+            .left{
+                float: left;
+                ul li{
+                    font-size: 13px;
+                    text-align: center;
+                    line-height: 30px;
+                    float: left;
+                    padding: 0 8px;
+                    position: relative;
+                    &:hover a{color: #ed0213;}
+                    &:first-child{padding-left: 0;}
+                    &:first-child:before{content: "";width: 0;}
+                    &:before{
+                        content: "";
+                        width: 1px;
+                        height: 10px;
+                        display: block;
+                        position: absolute;
+                        top: 10px;
+                        left: 2px;
+                        background: #e4e4e4;
+                    }
+                    &:nth-last-child(1),&:nth-last-child(2){padding-right: 18px;}
+                    &:nth-last-child(1):after , &:nth-last-child(2) a:after{
+                        content: "";
+                        position: absolute;
+                        border-top: 6px solid #999999;
+                        border-left: 6px solid #FFFFFF;
+                        border-bottom: 6px solid #FFFFFF;
+                        border-right: 6px solid #FFFFFF;
+                        right: 0px;
+                        top: 12px;
+                    }
+                a{color: #a4a4a4;}
+                }
+            }
+        .right{
+            float: right;
+            ul li{
+                font-size: 13px;
+                text-align: center;
+                line-height: 30px;
+                float: left;
+                padding: 0 8px;
+                position: relative;
+                &:hover a{color: #ed0213;}
+                &:before{
+                    content: "";
+                    width: 1px;
+                    height: 10px;
+                    display: block;
+                    position: absolute;
+                    top: 10px;
+                    left: 0px;
+                    background: #e4e4e4;
+                }
+                &:nth-child(1):before,&:nth-child(2):before{
+                    content: "";
+                    width: 0px;
+                }
+                &:last-child a i{padding-left: 5px;}
+                a{color: #a4a4a4;}
+                i{
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    background: url(/img/icon-common.png) no-repeat 0px 0px;
+                }
+            }
+           }
+       }
 }
 /*header*/
 .header{
+    background: #FFFFFF;
 	height: 70px;
 	position: relative;
 }
