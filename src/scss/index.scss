@@ -432,7 +432,7 @@
 .watch-box .container .box .forward{
 	width: 22px;
 	height: 75px;
-	background: #666666;
+	background: #bcbcbe url(/img/forward.jpg) no-repeat center;
 	position: absolute;
 	right: 0;
 	top: 115px;
@@ -440,20 +440,12 @@
 	cursor: pointer;
 }
 .watch-box .container .box .forward:hover{opacity: 1;}
-.watch-box .container .box .forward .right{
-	width: 10px;
-    height: 10px;
-    border-top: 3px solid #ffffff;
-    border-right: 3px solid #ffffff;
-    transform: rotate(45deg);
-    margin-top: 35px;
-    opacity: 0.5;
-}
+
 .watch-box .container .box .forward:hover .right{opacity: 1;}
 .watch-box .container .box .backwards{
 	width: 22px;
 	height: 75px;
-	background: #666666;
+	background: #d1d1d1 url(/img/back.jpg) no-repeat center;
 	position: absolute;
 	left: 0;
 	top: 115px;
@@ -461,17 +453,6 @@
 	cursor: pointer;
 }
 .watch-box .container .box .backwards:hover{opacity: 1;}
-.watch-box .container .box .backwards .left{
-	width: 10px;
-    height: 10px;
-    border-bottom: 3px solid #ffffff;
-    border-left: 3px solid #ffffff;
-    transform: rotate(45deg);
-    margin-top: 35px;
-    margin-left: 5px;
-    opacity: 0.5;
-}
-.watch-box .container .box .backwards:hover .left{opacity: 1;}
 /*toTop*/
 .toTop a{
 	width: 40px;
