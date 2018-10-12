@@ -11,6 +11,7 @@ $borderColor:#dddddd;
     border-bottom: 1px solid $borderColor;
     .container{
         width: $width;
+        height: 750px;
         margin: 0 auto;
         font-size: 12px;
         color: #3A3A3A;
@@ -75,6 +76,13 @@ $borderColor:#dddddd;
                         text-align: center;
                         width: 88px; 
                     }
+            @mixin details-p{
+                display: inline-block;
+                padding: 10px;
+                border: 1px solid $borderColor;
+                margin: 5px;
+                cursor: pointer;
+            }
             float: right;
             width: 700px;
             .title{
@@ -102,6 +110,183 @@ $borderColor:#dddddd;
                         color: $border;
                     }
                 }
+                .sale{
+                    label{
+                        @include details-label;
+                        float: left;
+                    }
+                    .wrap{
+                        float: left;
+                        p{height: 30px;}
+                        span{
+                            display: inline-block;
+                            width: 60px;
+                            height: 20px;
+                            border: 1px solid $border;
+                            line-height: 20px;
+                            text-align: center;
+                            color: $border;
+                            margin-right: 13px;
+                        }
+                    }
+                }
+            }
+            .service{
+                height: 72px;
+                border-bottom: 1px solid $borderColor;
+                p{
+                    height: 36px;
+                    line-height: 36px;
+                    label{
+                        @include details-label;
+                    }
+                }
+                .description{
+                   span:first-of-type{
+                        border-right: 1px solid $borderColor;
+                        padding-right: 15px;
+                   }
+                   span:last-of-type{padding-left: 15px;}
+                }
+            }
+            .selectColor{
+                height: 110px;
+                padding: 10px 0;
+                label{
+                    @include details-label;
+                    float: left;
+                    height: 50px;
+                    line-height: 50px;
+                }
+                .colors{
+                    float: left;
+                    width: 530px;
+                    display: flex;
+                    flex-flow: wrap;
+                    p{
+                        @include details-p;
+                        i{
+                            width: 30px;
+                            height: 25px;
+                            background: red;
+                            float: left;
+                        }
+                        span{
+                            float: left;
+                            margin-left: 10px;
+                            line-height: 25px;
+                        }
+                    }
+                }
+            }
+            .selectVersion{
+                height: 45px;
+                label{
+                    @include details-label;
+                    float: left;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                .versions{
+                    float: left;
+                    p{@include details-p;}
+                }
+            }
+            .selectCombo{
+                margin-top: 5px;
+                height: 45px;
+                label{
+                    @include details-label;
+                    float: left;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                .combos{
+                    float: left;
+                    p{@include details-p;}
+                }
+            }
+            .moreService{
+                margin-top: 5px;
+                height: 45px;
+                label{
+                    @include details-label;
+                    float: left;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                .more{
+                    float: left;
+                    p{@include details-p;}
+                }
+            }
+            .securityService{
+                margin-top: 5px;
+                height: 45px;
+                label{
+                    @include details-label;
+                    float: left;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                .sec-services{
+                    float: left;
+                    p{@include details-p;}
+                }
+            }
+            .selected{
+                margin-top: 5px;
+                label{
+                    float: left;
+                    height: 20px;
+                    line-height: 20px;
+                    @include details-label;
+                }
+                p{
+                    height: 20px;
+                    line-height: 20px;
+                }
+            }
+            .bottom{
+                margin-top: 10px;
+                label{
+                    @include details-label;
+                    float: left;
+                    .num-box{
+                        height: 43px;
+                        width: 61px;
+                        margin-left: 20px;
+                        input{
+                            height: 43px;
+                            width: 40px;
+                            float: left;
+                            text-align: center;
+                        }
+                        i{
+                            float: right;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            text-align: center;
+                            border: 1px solid #A4A4A4;
+                            border-left: none;
+                            cursor: pointer;
+                            &:first-of-type{border-bottom: none;}
+                        }
+                    }
+                }
+                 a{
+                    float: left;
+                    width: 175px;
+                    height: 45px;
+                    background: $border;
+                    margin-right: 10px;
+                    font-size: 18px;
+                    color: #FFFFFF;
+                    line-height: 45px;
+                    text-align: center;
+                }
+                .addtocart{background: #fc600c;}
             }
         }
     }

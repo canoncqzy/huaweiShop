@@ -249,74 +249,22 @@
 					<h2>热销单品</h2>
 				</div>
 				<div class="left-pic"><a href="#"><img src="img/1537543499355.jpg"/></a></div>
-				<ul>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-				</ul>
+				<ul></ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="hotProducts-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--competitive-->
 		<div class="competitive">
 			<div class="container">
@@ -324,12 +272,10 @@
 					<h2>精品推荐</h2>
 				</div>
 				<div class="box competitive-box">
-					<ul></ul>
+					<ul style="position: absolute;"></ul>
 					<div class="forward">
-						<div class="right"></div>
 					</div>
 					<div class="backwards">
-						<div class="left"></div>
 					</div>
 				</div>
 			</div>
@@ -380,103 +326,28 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="phone-ul">
 					<a href="#">
 						<li>
 							<img src="img/1531452485136.jpg"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="phone-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--noteBook-->
 		<div class="noteBook phone">
 			<div class="container">
@@ -489,71 +360,28 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="computer-ul">
 					<a href="#">
 						<li>
 							<img src="img/1535515966834.jpg"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="computer-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--slab-->
 		<div class="slab noteBook phone">
 			<div class="container">
@@ -566,71 +394,28 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="slab-ul">
 					<a href="#">
 						<li>
 							<img src="img/1536206604003.jpg"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="slab-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--watch-->
 		<div class="watch slab noteBook phone">
 			<div class="container">
@@ -643,68 +428,33 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="watch-ul">
 					<a href="#">
 						<li>
 							<img src="img/1536735424097.png"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="watch-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--watch-box-->
 		<div class="watch-box">
 			<div class="container">
 				<div class="box watch-box">
-					<ul></ul>
+					<ul style="position: absolute;"></ul>
 					<div class="forward">
 						<div class="right"></div>
 					</div>
@@ -751,68 +501,33 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="house-ul">
 					<a href="#">
 						<li>
 							<img src="img/1535383903812.png"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="house-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--house-box-->
 		<div class="house-box watch-box">
 			<div class="container">
 				<div class="box house-box">
-					<ul></ul>
+					<ul style="position: absolute;"></ul>
 					<div class="forward">
 						<div class="right"></div>
 					</div>
@@ -853,68 +568,33 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="hotParts-ul">
 					<a href="#">
 						<li>
 							<img src="img/1534833076911.png"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="hotParts-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--parts-box-->
 		<div class="parts-box house-box watch-box">
 			<div class="container">
 				<div class="box parts-box">
-					<ul></ul>
+					<ul style="position: absolute;"></ul>
 					<div class="forward">
 						<div class="right"></div>
 					</div>
@@ -955,68 +635,33 @@
 					</div>
 					<div class="more"><a href="#">更多></a></div>
 				</div>
-				<ul>
+				<ul class="brandParts-ul">
 					<a href="#">
 						<li>
 							<img src="img/1537424699902.png"/>
 						</li>
 					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
-					<a href="#">
-						<li>
-							<div class="pic"><img src="img/navwindow1.jpg"/></div>
-							<p>荣耀10</p>
-							<p>限时最高优惠400</p>
-							<p><span>￥2299</span></p>
-						</li>
-					</a>
 				</ul>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="brandParts-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p>{{curr.desc}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--brand-parts-box-->
 		<div class="parts-box house-box watch-box">
 			<div class="container">
 				<div class="box brand-parts-box">
-					<ul></ul>
+					<ul style="position: absolute;"></ul>
 					<div class="forward">
 						<div class="right"></div>
 					</div>

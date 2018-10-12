@@ -251,19 +251,20 @@ body{background: #f0f0f0;}
 	border: 1px solid #dddddd;
 	border-radius: 5px;
 	background: white;
-	line-height: 33px;
 	margin-top: 20px;
-	position: relative;
 	padding-left: 70px;
+	line-height: 33px;
 }
 .services .container .service-r .kf a i{
-	display: inline-block;
+	float: left;
 	width: 22px;
 	height: 22px;
 	background: url(/img/icon-common.png) no-repeat -101px -22px;
-	position: absolute;
-	top: 10px;
-	left: 40px;
+	margin-top: 10px;
+	margin-left: -40px;
+}
+.services .container .service-r .kf a span{
+    float: left;
 }
 /*footer*/
 .footer{

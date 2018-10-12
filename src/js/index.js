@@ -3,8 +3,11 @@ require(["config"],function(){
 		function Index(){
 			this.showNavWindow();
 			this.loadBanner();
+			this.loadProducts();
 			this.loadRecommend();
 			this.toTop();
+			
+			this.setLeft = 0;
 		}
 		Index.prototype={
 			constructor:Index,
@@ -17,6 +20,10 @@ require(["config"],function(){
 				$("#nav-left").on("mouseenter","li",this.navEnter);
 				//绑定鼠标移出li监听事件
 				$("#nav-left").on("mouseleave","li",this.navLeave);
+				//绑定点击向后翻页事件
+				$(".forward").on("click", $.proxy(this.nextPage,this));
+				//绑定点击向前翻页事件
+				$(".backwards").on("click",this.frontPage);
 			},
 			navEnter:function(){
 				//获取当前li中ID
@@ -65,6 +72,14 @@ require(["config"],function(){
 					$(this).hide();
 				});
 			},
+			nextPage:function(e){
+				var src = e.target;
+				console.log(src);
+				
+			},
+			frontPage:function(){
+				console.log(this);
+			},
 			loadBanner:function(){
 				$(".advertise-container").carousel({
 					imgs:[
@@ -94,29 +109,74 @@ require(["config"],function(){
 					.done($.proxy(this.handleBrandData, this));
 			},
 			handleCompetitiveData:function(data){
-				// 渲染
 				var html = template("competitive-recommend-template", data);
 				$("ul",".competitive-box").prepend(html);
 			},
 			handleWatchData:function(data){
-				// 渲染
 				var html = template("watch-recommend-template", data);
 				$("ul",".watch-box").prepend(html);
 			},
 			handleHouseData:function(data){
-				// 渲染
 				var html = template("house-recommend-template", data);
 				$("ul",".house-box").prepend(html);
 			},
 			handlePartsData:function(data){
-				// 渲染
 				var html = template("parts-recommend-template", data);
 				$("ul",".parts-box").prepend(html);
 			},
 			handleBrandData:function(data){
-				// 渲染
 				var html = template("brand-parts-recommend-template", data);
 				$("ul",".brand-parts-box").prepend(html);
+			},
+			loadProducts:function(){
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/hotProducts")
+					.done($.proxy(this.hotProductsData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/phone")
+					.done($.proxy(this.phoneData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/computer")
+					.done($.proxy(this.computerData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/slab")
+					.done($.proxy(this.slabData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/watch")
+				.done($.proxy(this.watchData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/house")
+				.done($.proxy(this.houseData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/hotParts")
+				.done($.proxy(this.hotPartsData, this));
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/brandParts")
+				.done($.proxy(this.brandPartsData, this));
+			},
+			hotProductsData:function(data){
+				var html = template("hotProducts-template", data);
+				$("ul",".hot-product").prepend(html);
+			},
+			phoneData:function(data){
+				var html = template("phone-template", data);
+				$(".phone-ul").append(html);
+			},
+			computerData:function(data){
+				var html = template("computer-template", data);
+				$(".computer-ul").append(html);
+			},
+			slabData:function(data){
+				var html = template("slab-template", data);
+				$(".slab-ul").append(html);
+			},
+			watchData:function(data){
+				var html = template("watch-template", data);
+				$(".watch-ul").append(html);
+			},
+			houseData:function(data){
+				var html = template("house-template", data);
+				$(".house-ul").append(html);
+			},
+			hotPartsData:function(data){
+				var html = template("hotParts-template", data);
+				$(".hotParts-ul").append(html);
+			},
+			brandPartsData:function(data){
+				var html = template("brandParts-template", data);
+				$(".brandParts-ul").append(html);
 			},
 			toTop:function(){
 				$(window).scroll(function(){

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="icon" href="/img/logo-icon.jpg" type="image/x-icon"/>
+		<link rel="stylesheet" type="text/css" href="/css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/cartHeader.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/confirm.css"/>
+		<script src="/lib/jquery/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--header-->
+		<header></header>
+		<!--address-->
+		<div class="address">
+			<div class="container">
+				<h2>收货地址</h2>
+				<div class="add-address">
+					<div class="created-address">
+						<p class="name-phone"><span>刘</span><span>15823110593</span></p>
+						<p class="city"><span>重庆</span><span>渝中区</span><span>上清寺街道</span></p>
+						<p class="oprator"><a href="javascript:void(0);">删除</a><a href="javascript:void(0);">编辑</a></p>
+					</div>
+					<div class="add-box"><i></i><span>新增收货地址</span></div>
+				</div>
+			</div>
+		</div>
+		<!--mask-->
+		<div class="mask">
+			<div class="add-address">
+				<div class="close"><a href="javascript:void(0);"><img src="/img/close.jpg"/></a></div>
+				<h2>-添加地址-</h2>
+				<p><label for="name">收货人:</label><input type="text" name="name" id="" value="" /></p>
+				<p><label for="phone">手机号:</label><input type="text" name="phone" id="" value="" /></p>
+				<p>
+					<label>收货地址:</label>
+					<select class="province">
+						<option value="">请选择省份</option>
+					</select>
+					<select class="city">
+						<option value="">请选择城市</option>
+					</select>
+					<select class="district">
+						<option value="">请选择区县</option>
+					</select>
+				</p>
+				<p><label for="detail-address">详细地址: </label><textarea name="detail-address"></textarea></p>
+				<p><a href="javascript:void(0);" class="cancel">取消</a><a href="javascript:void(0);" class="save">保存并使用</a></p>
+			</div>
+		</div>
+		<!--products-->
+		<div class="products">
+			<div class="container">
+				<div class="box">
+					<div class="list">
+						<ul class="prod">
+							<li class="img"></li>
+							<li class="title">HUAWEI P20 Pro 6GB+128GB 全网通版(极光色 )</li>
+							<li class="num">x1</li>
+							<li class="price">￥4988.00</li>
+						</ul>
+						<ul class="prod">
+							<li class="img"></li>
+							<li class="title">HUAWEI P20 Pro 6GB+128GB 全网通版(极光色 )</li>
+							<li class="num">x1</li>
+							<li class="price">￥4988.00</li>
+						</ul>
+					</div>
+					<div class="info">
+						<h2>商品由<a href="/index.html">华为商城</a>选择合作快递</h2>
+						<div class="should-pay">
+							<p>结算金额：<span>￥7000.00</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(".info",".box").css("height",$(".box").css("height"));
+		</script>
+		<!--pay-->
+		<div class="pay">
+			<div class="container">
+				<div class="box">
+					<p class="total-price">应付总额：<span>￥7000.00</span></p>
+					<p class="grade">可获得积分：<span>700</span></p>
+					<p class="subm"><a href="javascript:void(0);">提交订单</a></p>
+				</div>
+			</div>
+		</div>
+		<!--footer-->
+		<footer></footer>
+		<script src="/lib/requirejs/require.js" data-main = "/js/confirm" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
