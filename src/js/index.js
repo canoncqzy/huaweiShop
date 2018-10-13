@@ -1,5 +1,5 @@
 require(["config"],function(){
-	require(["jquery","template","header","carousel"],function($,template){
+	require(["jquery","template","header","carousel","cookie"],function($,template){
 		function Index(){
 			this.showNavWindow();
 			this.loadBanner();
@@ -7,7 +7,7 @@ require(["config"],function(){
 			this.loadRecommend();
 			this.toTop();
 			
-			this.setLeft = 0;
+			this.setLeft= 0;
 		}
 		Index.prototype={
 			constructor:Index,
@@ -23,7 +23,9 @@ require(["config"],function(){
 				//绑定点击向后翻页事件
 				$(".forward").on("click", $.proxy(this.nextPage,this));
 				//绑定点击向前翻页事件
-				$(".backwards").on("click",this.frontPage);
+				$(".backwards").on("click",$.proxy(this.frontPage,this));
+				//绑定鼠标点击监听事件
+				$("#nav-left").on("click","a",this.navClickHandler);
 			},
 			navEnter:function(){
 				//获取当前li中ID
@@ -47,7 +49,7 @@ require(["config"],function(){
 								//遍历显示商品列表信息
 								var html_list = "";
 								curr.product.forEach(curr=>{
-									html_list+=`<a href="/html/detail.html">
+									html_list+=`<a href="#">
 													<li>
 														<div class="pic"><img src="${curr.img}"/></div>
 														<p>${curr.name}</p>
@@ -72,13 +74,82 @@ require(["config"],function(){
 					$(this).hide();
 				});
 			},
+			navClickHandler:function(){
+				var _id = $(this).parents(".box").siblings(".id").text(),
+					arrId = [],
+					arrTitles = [],
+					str = "#nav-window"+_id;
+					//当前点击a标签的文本
+					arrTitles.push($(this).text());
+					//获取标题
+				var titles = $(str).find(".box").children();
+				//push进数组
+				titles.each(function(index,curr){
+					arrTitles.push($(curr).text());
+				});
+				//id数组
+				arrId.push(_id);
+				$.cookie.json = true;
+				$.cookie("id", arrId, {expires: 10, path: "/"});
+				$.cookie("titles", arrTitles, {expires: 10, path: "/"});
+			},
 			nextPage:function(e){
 				var src = e.target;
-				console.log(src);
-				
+				var li_num = $(src).siblings("ul").find("li").length,
+					li_width = $(src).siblings("ul").find("li").width(),
+					box_width = $(src).parent(".box").width(),
+					ul_left = $(src).siblings("ul").position().left,
+					_cursor = $(src).siblings(".backwards").css("cursor");
+				//设置ul长度
+				$(src).siblings("ul").css("width",li_num*li_width);
+				if($(src).css("cursor")!="not-allowed"){
+					if(li_num*li_width>(0-ul_left)){
+						//每次移动盒子宽度
+						this.setLeft-=li_width*2;
+						$(src).siblings("ul").animate({
+							left:this.setLeft
+						});
+						//设置后退按钮属性
+						$(src).siblings(".backwards").css("cursor","pointer");
+						//判断
+						if(li_num*li_width+ul_left<=box_width+li_width*2){
+							$(src).siblings("ul").animate({
+								left:ul_left
+							});
+							$(src).css("cursor","not-allowed");
+							this.setLeft = 0;
+						}
+					}
+				}
 			},
-			frontPage:function(){
-				console.log(this);
+			frontPage:function(e){
+				var src = e.target;
+				var li_num = $(src).siblings("ul").find("li").length,
+					li_width = $(src).siblings("ul").find("li").width(),
+					box_width = $(src).parent(".box").width(),
+					ul_left = $(src).siblings("ul").position().left,
+					_cursor = $(src).siblings(".backwards").css("cursor");
+				//设置ul长度
+				$(src).siblings("ul").css("width",li_num*li_width);
+				if($(src).css("cursor")!="not-allowed"){
+					if(li_num*li_width>(0-ul_left)){
+						//每次移动盒子宽度
+						ul_left+=li_width*2;
+						$(src).siblings("ul").animate({
+							left:ul_left
+						});
+						//设置前进按钮属性
+						$(src).siblings(".forward").css("cursor","pointer");
+						//判断
+						if(ul_left>=0){
+							$(src).siblings("ul").animate({
+								left:0
+							});
+							$(src).css("cursor","not-allowed");
+							this.setLeft=0;
+						}
+					}
+				}
 			},
 			loadBanner:function(){
 				$(".advertise-container").carousel({
@@ -110,23 +181,23 @@ require(["config"],function(){
 			},
 			handleCompetitiveData:function(data){
 				var html = template("competitive-recommend-template", data);
-				$("ul",".competitive-box").prepend(html);
+				$(".c-ul",".competitive-box").prepend(html);
 			},
 			handleWatchData:function(data){
 				var html = template("watch-recommend-template", data);
-				$("ul",".watch-box").prepend(html);
+				$(".w-ul",".watch-box").prepend(html);
 			},
 			handleHouseData:function(data){
 				var html = template("house-recommend-template", data);
-				$("ul",".house-box").prepend(html);
+				$(".h-ul",".house-box").prepend(html);
 			},
 			handlePartsData:function(data){
 				var html = template("parts-recommend-template", data);
-				$("ul",".parts-box").prepend(html);
+				$(".p-ul",".parts-box").prepend(html);
 			},
 			handleBrandData:function(data){
 				var html = template("brand-parts-recommend-template", data);
-				$("ul",".brand-parts-box").prepend(html);
+				$(".bp-ul",".brand-parts-box").prepend(html);
 			},
 			loadProducts:function(){
 				$.ajax("http://rap2api.taobao.org/app/mock/86514/hotProducts")
@@ -148,7 +219,7 @@ require(["config"],function(){
 			},
 			hotProductsData:function(data){
 				var html = template("hotProducts-template", data);
-				$("ul",".hot-product").prepend(html);
+				$(".hot-product-ul").prepend(html);
 			},
 			phoneData:function(data){
 				var html = template("phone-template", data);

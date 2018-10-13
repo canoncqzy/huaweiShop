@@ -15,17 +15,12 @@
 			<div class="container">
 				<div class="title">
 					<a href="/index.html">首页</a>
-					<a href="#"><i></i>笔记本&平板</a>
-					<a href="#"><i></i>笔记本电脑</a>
 				</div>
 				<div class="tags">
 					<div class="kind">
 						<ul>
 							<li>分类:</li>
 							<li><a href="#">全部</a></li>
-							<li><a href="#">平板电脑</a></li>
-							<li><a href="#">笔记本电脑</a></li>
-							<li><a href="#">笔记本配件</a></li>
 						</ul>
 					</div>
 					<div class="sort">
@@ -37,70 +32,25 @@
 						</ul>
 					</div>
 					<div class="list">
-						<div class="box">
-							<p class="img"></p>
-							<p class="name">荣耀</p>
-							<p class="desc">高性能金属轻薄本</p>
-							<p class="price">￥3999</p>
-							<div class="bottom">
-								<a href="#">选购</a>
-								<a href="#">2325人评价</a>
-							</div>
-						</div>
-						<div class="box">
-							<p class="img"></p>
-							<p class="name">荣耀</p>
-							<p class="desc">高性能金属轻薄本</p>
-							<p class="price">￥3999</p>
-							<div class="bottom">
-								<a href="#">选购</a>
-								<a href="#">2325人评价</a>
-							</div>
-						</div>
-						<div class="box">
-							<p class="img"></p>
-							<p class="name">荣耀</p>
-							<p class="desc">高性能金属轻薄本</p>
-							<p class="price">￥3999</p>
-							<div class="bottom">
-								<a href="#">选购</a>
-								<a href="#">2325人评价</a>
-							</div>
-						</div>
-						<div class="box">
-							<p class="img"></p>
-							<p class="name">荣耀</p>
-							<p class="desc">高性能金属轻薄本</p>
-							<p class="price">￥3999</p>
-							<div class="bottom">
-								<a href="#">选购</a>
-								<a href="#">2325人评价</a>
-							</div>
-						</div>
-						<div class="box">
-							<p class="img"></p>
-							<p class="name">荣耀</p>
-							<p class="desc">高性能金属轻薄本</p>
-							<p class="price">￥3999</p>
-							<div class="bottom">
-								<a href="#">选购</a>
-								<a href="#">2325人评价</a>
-							</div>
-						</div>
-						<div class="box">
-							<p class="img"></p>
-							<p class="name">荣耀</p>
-							<p class="desc">高性能金属轻薄本</p>
-							<p class="price">￥3999</p>
-							<div class="bottom">
-								<a href="#">选购</a>
-								<a href="#">2325人评价</a>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="list-template">
+			{{each res_body prod}}
+			<div class="box">
+				<p class="img"><img src="{{prod.img}}"/></p>
+				<p class="name">{{prod.title}}</p>
+				<p class="desc">{{prod.desc}}</p>
+				<p class="price">￥{{prod.price}}</p>
+				<div class="bottom">
+					<a href="#">选购</a>
+					<a href="#">{{prod.assessment}}人评价</a>
+				</div>
+			</div>
+			{{/each}}
+		</script>
 		<!--footer-->
 		<footer></footer>
 	<script src="/lib/requirejs/require.js" data-main = "/js/list" type="text/javascript" charset="utf-8"></script>

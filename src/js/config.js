@@ -6,7 +6,8 @@ require.config({
 		"header":"js/header",
 		"carousel":"lib/jquery-plugins/jquery.carousel",
 		"template":"lib/art-template/template-web",
-		"cartHeader":"js/cartHeader"
+		"cartHeader":"js/cartHeader",
+		"cookie":"lib/jquery-plugins/jquery.cookie"
 	},
 	shim: {
 		"carousel": { // 为轮播插件指明依赖关系

@@ -49,23 +49,22 @@ body{background: #FFFFFF;}
 }
 .content .container .list{
 	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	
 }
 .content .container .list .box{
+    display: inline-block;
 	width: 225px;
 	height: 365px;
 	border: 1px solid #dedede;
 	margin-top: 20px;
 	cursor: pointer;
 	text-align: center;
+	margin-right: 10px;
 }
 .content .container .list .box:hover{border:1px solid #e01d20}
 .content .container .list .box .img{
 	width: 180px;
 	height: 140px;
-	background: #CCCCCC;
 	margin: 0 auto;
 	margin-top: 60px;
 	margin-bottom: 37px;
