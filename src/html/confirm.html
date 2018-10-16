@@ -5,6 +5,7 @@
 		<title></title>
 		<link rel="icon" href="/img/logo-icon.jpg" type="image/x-icon"/>
 		<link rel="stylesheet" type="text/css" href="/css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/rightNav.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/cartHeader.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/confirm.css"/>
 		<script src="/lib/jquery/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
@@ -16,81 +17,85 @@
 		<div class="address">
 			<div class="container">
 				<h2>收货地址</h2>
-				<div class="add-address">
-					<div class="created-address">
-						<p class="name-phone"><span>刘</span><span>15823110593</span></p>
-						<p class="city"><span>重庆</span><span>渝中区</span><span>上清寺街道</span></p>
-						<p class="oprator"><a href="javascript:void(0);">删除</a><a href="javascript:void(0);">编辑</a></p>
-					</div>
+				<div class="add-address add-new-address">
 					<div class="add-box"><i></i><span>新增收货地址</span></div>
 				</div>
 			</div>
 		</div>
+		<!--模版1-->
+		<script type="text/html" id="new-address-template">
+			{{each address addr}}
+			<div class="created-address">
+				<p class="name-phone"><span>{{addr.consignee}}</span><span>{{addr.phoneNumber}}</span></p>
+				<p class="city"><span>{{addr.province}}</span><span>{{addr.city}}</span><span>{{addr.district}}</span><span>{{addr.addressDetails}}</span></p>
+				<p class="oprator"><a href="javascript:void(0);" class="delete-address">删除</a><a href="javascript:void(0);">编辑</a></p>
+			</div>
+			{{/each}}
+		</script>
+		<!--模版2-->
+		<script type="text/html" id="addToAddressBox-template">
+			<div class="created-address">
+				<p class="name-phone"><span>{{consignee}}</span><span>{{phoneNumber}}</span></p>
+				<p class="city"><span>{{province}}</span><span>{{city}}</span><span>{{district}}</span><span>{{addressDetails}}</span></p>
+				<p class="oprator"><a href="javascript:void(0);">删除</a><a href="javascript:void(0);">编辑</a></p>
+			</div>
+		</script>
 		<!--mask-->
 		<div class="mask">
 			<div class="add-address">
-				<div class="close"><a href="javascript:void(0);"><img src="/img/close.jpg"/></a></div>
+				<div class="close"><a href="javascript:void(0);" class="close-mask"><img src="/img/close.jpg"/></a></div>
 				<h2>-添加地址-</h2>
-				<p><label for="name">收货人:</label><input type="text" name="name" id="" value="" /></p>
-				<p><label for="phone">手机号:</label><input type="text" name="phone" id="" value="" /></p>
+				<p><label for="name">收货人:</label><input type="text" name="name" id="" value="" class="consignee"/></p>
+				<p><label for="phone">手机号:</label><input type="text" name="phone" id="" value="" class="phoneNumber"/></p>
 				<p>
 					<label>收货地址:</label>
-					<select class="province">
-						<option value="">请选择省份</option>
-					</select>
-					<select class="city">
-						<option value="">请选择城市</option>
-					</select>
-					<select class="district">
-						<option value="">请选择区县</option>
-					</select>
+					<select class="province province-select"></select>
+					<select class="city city-select"></select>
+					<select class="district district-select"></select>
 				</p>
-				<p><label for="detail-address">详细地址: </label><textarea name="detail-address"></textarea></p>
-				<p><a href="javascript:void(0);" class="cancel">取消</a><a href="javascript:void(0);" class="save">保存并使用</a></p>
+				<p><label for="detail-address">详细地址: </label><textarea name="detail-address" class="address-details"></textarea></p>
+				<p><a href="javascript:void(0);" class="cancel close-mask">取消</a><a href="javascript:void(0);" class="save save-and-use">保存并使用</a></p>
 			</div>
 		</div>
 		<!--products-->
 		<div class="products">
 			<div class="container">
 				<div class="box">
-					<div class="list">
-						<ul class="prod">
-							<li class="img"></li>
-							<li class="title">HUAWEI P20 Pro 6GB+128GB 全网通版(极光色 )</li>
-							<li class="num">x1</li>
-							<li class="price">￥4988.00</li>
-						</ul>
-						<ul class="prod">
-							<li class="img"></li>
-							<li class="title">HUAWEI P20 Pro 6GB+128GB 全网通版(极光色 )</li>
-							<li class="num">x1</li>
-							<li class="price">￥4988.00</li>
-						</ul>
-					</div>
+					<div class="list products-box-list"></div>
 					<div class="info">
 						<h2>商品由<a href="/index.html">华为商城</a>选择合作快递</h2>
 						<div class="should-pay">
-							<p>结算金额：<span>￥7000.00</span></p>
+							<p>结算金额：<span class="totl-price">￥0.00</span></p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			$(".info",".box").css("height",$(".box").css("height"));
+		<!--模版-->
+		<script type="text/html" id="products-list-template">
+			{{each products prod}}
+			<ul class="prod">
+				<li class="img"><img src="{{prod.img}}"/></li>
+				<li class="title">{{prod.title}}</li>
+				<li class="num">x{{prod.amount}}</li>
+				<li class="price">￥{{prod.price}}.00</li>
+			</ul>
+			{{/each}}
 		</script>
 		<!--pay-->
 		<div class="pay">
 			<div class="container">
 				<div class="box">
-					<p class="total-price">应付总额：<span>￥7000.00</span></p>
-					<p class="grade">可获得积分：<span>700</span></p>
+					<p class="total-price">应付总额：<span class="totl-price">￥0.00</span></p>
+					<p class="grade">可获得积分：<span class="pay-grade">0</span></p>
 					<p class="subm"><a href="javascript:void(0);">提交订单</a></p>
 				</div>
 			</div>
 		</div>
 		<!--footer-->
 		<footer></footer>
+		<!--rightNav-->
+		<div class="rightNav"></div>
 		<script src="/lib/requirejs/require.js" data-main = "/js/confirm" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

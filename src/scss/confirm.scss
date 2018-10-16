@@ -74,6 +74,7 @@ $boder:1px solid #eaeaea;
 }
 //mask
 .mask{
+    z-index: 999;
     display: none;
     background: rgba(0,0,0,.5);;
     position: fixed;
@@ -126,7 +127,7 @@ $boder:1px solid #eaeaea;
                 outline: none;
             }
             select{
-                width: 120px;
+                width: 195px;
                 height: 38px;
                 color: $color;
                 outline: none;
@@ -172,14 +173,12 @@ $boder:1px solid #eaeaea;
                     .img{
                         width: 75px;
                         height: 100px;
-                        background: red;
                         margin: 25px 13px;
                     }
                     .title{
                         width: 420px;
-                        height: 80px;
-                        line-height: 80px;
                         padding-left: 20px;
+                        margin-top: 35px;
                     }
                     .num{
                         width: 90px;

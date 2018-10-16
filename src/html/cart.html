@@ -5,6 +5,7 @@
 		<title></title>
 		<link rel="icon" href="/img/logo-icon.jpg" type="image/x-icon"/>
 		<link rel="stylesheet" type="text/css" href="/css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/rightNav.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/cartHeader.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/cart.css"/>
 	</head>
@@ -23,7 +24,7 @@
 				</div>
 				<div class="not-empty">
 					<div class="top">
-						<span><input type="checkbox" name="" id="total1"/><label for="total1">全选</label></span>
+						<span><input type="checkbox" class="checkAll ck_prod" id="total1"/><label for="total1">全选</label></span>
 						<ul>
 							<li>商品</li>
 							<li>单价</li>
@@ -32,118 +33,48 @@
 							<li>操作</li>
 						</ul>
 					</div>
-					<div class="prod-list">
-						<span><input type="checkbox" /></span>
-						<ul>
-							<li><img src="/img/navwindow1.jpg"/>HUAWEI p20 6GB+64GB 全网通版(极光色)</li>
-							<li>￥3388.00</li>
-							<li>
-								<div class="box">
-									<input type="text" value="1"/>
-									<i>+</i>
-									<i>-</i>
-								</div>
-							</li>
-							<li>￥3388.00</li>
-							<li><a href="javascript:void(0);">删除</a></li>
-						</ul>
-					</div>
-					<div class="prod-list">
-						<span><input type="checkbox" /></span>
-						<ul>
-							<li><img src="/img/navwindow1.jpg"/>HUAWEI p20 6GB+64GB 全网通版(极光色)</li>
-							<li>￥3388.00</li>
-							<li>
-								<div class="box">
-									<input type="text" value="1"/>
-									<i>+</i>
-									<i>-</i>
-								</div>
-							</li>
-							<li>￥3388.00</li>
-							<li><a href="javascript:void(0);">删除</a></li>
-						</ul>
-					</div>
-					<div class="prod-list">
-						<span><input type="checkbox" /></span>
-						<ul>
-							<li><img src="/img/navwindow1.jpg"/>HUAWEI p20 6GB+64GB 全网通版(极光色)</li>
-							<li>￥3388.00</li>
-							<li>
-								<div class="box">
-									<input type="text" value="1"/>
-									<i>+</i>
-									<i>-</i>
-								</div>
-							</li>
-							<li>￥3388.00</li>
-							<li><a href="javascript:void(0);">删除</a></li>
-						</ul>
-					</div>
+					<div class="template-box"></div>
 					<div class="bottom">
-						<span><input type="checkbox" id="total2" /><label for="total2">全选</label><a href="javascript:void(0);">删除</a></span>
-						<a href="/html/confirm.html" class="pay">立即结算</a>
+						<span><input type="checkbox" class="checkAll ck_prod" id="total2" /><label for="total2">全选</label><a href="javascript:void(0);" class="clear-cart">清空购物车</a></span>
+						<a href="javascript:void(0);" class="pay pay-btn">立即结算</a>
 						<div class="total">
-							<p>总计：<b>￥0.00</b></p>
-							<p>已选择<b>1</b>件商品</p>
+							<p>总计：<b class="calc-total-price">￥0.00</b></p>
+							<p>已选择<b class="selected-product-num">0</b>件商品</p>
 						</div>
 					</div>
 				</div>
 				
 			</div>
 		</div>
-		
+		<script type="text/html" id="list-template">
+			{{each products prod}}
+			<div class="prod-list">
+				<span><input type="checkbox" class="ck_prod"/></span>
+				<ul>
+					<b style="display: none;">{{prod.id}}</b>
+					<li><img src="{{prod.img}}"/>{{prod.title}}</li>
+					<li>{{prod.price}}.00</li>
+					<li>
+						<div class="box num-box">
+							<input class="amount-input" type="text" value="{{prod.amount}}"/>
+							<i class="increment">+</i>
+							<i class="decrement">-</i>
+						</div>
+					</li>
+					<li class="sub">￥{{prod.price*prod.amount}}.00</li>
+					<li><a href="javascript:void(0);" class="delete">删除</a></li>
+				</ul>
+			</div>
+			{{/each}}
+		</script>
 		<!--hot-reg-->
 		<div class="hot-reg">
 			<div class="container">
 				<div class="title">
 					<h2>热销推荐</h2>
 				</div>
-				<div class="box">
-					<ul>
-						<a href="#">
-							<li>
-								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
-								<p>荣耀10</p>
-								<p><span>￥2299</span></p>
-							</li>
-						</a>
-						<a href="#">
-							<li>
-								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
-								<p>荣耀10</p>
-								<p><span>￥2299</span></p>
-							</li>
-						</a>
-						<a href="#">
-							<li>
-								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
-								<p>荣耀10</p>
-								<p><span>￥2299</span></p>
-							</li>
-						</a>
-						<a href="#">
-							<li>
-								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
-								<p>荣耀10</p>
-								<p><span>￥2299</span></p>
-							</li>
-						</a>
-						<a href="#">
-							<li>
-								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
-								<p>荣耀10</p>
-								<p><span>￥2299</span></p>
-							</li>
-						</a>
-						<a href="#">
-							<li>
-								<div class="pic"><img src="/img/navwindow1.jpg"/></div>
-								<p>荣耀10</p>
-								<p><span>￥2299</span></p>
-							</li>
-						</a>
-					</ul>
+				<div class="box hot-reg-box">
+					<ul style="position: absolute;"></ul>
 					<div class="forward">
 						<div class="right"></div>
 					</div>
@@ -153,8 +84,22 @@
 				</div>
 			</div>
 		</div>
+		<!--art-template模版引擎-->
+		<script type="text/html" id="recommend-template">
+			{{each res_body curr}}
+				<a href="#">
+					<li>
+						<div class="pic"><img src="{{curr.img}}"/></div>
+						<p>{{curr.title}}</p>
+						<p><span>￥{{curr.price}}</span></p>
+					</li>
+				</a>
+			{{/each}}
+		</script>
 		<!--footer-->
 		<footer></footer>
+		<!--rightNav-->
+		<div class="rightNav"></div>
 		<script src="/lib/requirejs/require.js" data-main = "/js/cart" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

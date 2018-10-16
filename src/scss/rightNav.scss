@@ -1,0 +1,49 @@
+.rightNav{
+    width: 60px;
+    height: 40px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 10px;
+    right: 0;
+}
+.rightNav .service{
+    width: 60px;
+    height: 80px;
+    text-align: center;
+    float: left;
+}
+.rightNav .service span{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background:rgba(0,0,0,0.7);
+    cursor: pointer;
+    line-height: 45px;
+}
+.rightNav .service span i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(/img/icon-common.png) no-repeat -166px 0px;
+}
+.rightNav .service p{
+    margin-top: 0px;
+    font-size: 12px;
+    color: #FFFFFF;
+    height: 15px;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.rightNav .suggest span i{
+    width: 15px;
+    height: 20px;
+    background: url(/img/icon-common.png) no-repeat -151px 0px;
+}
+.rightNav .help span i{
+    width: 17px;
+    background: url(/img/icon-common.png) no-repeat -134px 0px;
+}

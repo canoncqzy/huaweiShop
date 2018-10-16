@@ -1,12 +1,12 @@
 require(["config"],function(){
-	require(["jquery","template","header","carousel","cookie"],function($,template){
+	require(["jquery","template","header","carousel","cookie","rightNav"],function($,template){
 		function Index(){
 			this.showNavWindow();
 			this.loadBanner();
 			this.loadProducts();
 			this.loadRecommend();
 			this.toTop();
-			
+			this.verify();
 			this.setLeft= 0;
 		}
 		Index.prototype={
@@ -26,6 +26,10 @@ require(["config"],function(){
 				$(".backwards").on("click",$.proxy(this.frontPage,this));
 				//绑定鼠标点击监听事件
 				$("#nav-left").on("click","a",this.navClickHandler);
+				//关闭头顶广告
+				$(".close-adver").click(function(){
+					$(".top-adver").hide();
+				});
 			},
 			navEnter:function(){
 				//获取当前li中ID
@@ -166,6 +170,8 @@ require(["config"],function(){
 					needTurnPage: false,
 					circlePosition: "right"
 				});
+				//轮播公告
+				this.slideGongGao();
 			},
 			loadRecommend:function(){
 				$.ajax("http://rap2api.taobao.org/app/mock/86514/competitiveRecommend")
@@ -252,12 +258,52 @@ require(["config"],function(){
 			toTop:function(){
 				$(window).scroll(function(){
 					var top = $(window).scrollTop();
-					if(top>=1500){
+					if(top>=1000){
 						$("a",".toTop").show()
 					}else{
 						$("a",".toTop").hide();
 					}
 				});
+			},
+			slideGongGao:function(){
+				var step = 0;
+				var li_height = $("li",".slide-gonggao").css("height").slice(0,2),
+					li_num = $("li",".slide-gonggao").length;
+				var timer = setInterval(function(){
+					step-=li_height;
+					if(step == -li_height*li_num){
+						step=0;
+						$(".slide-gonggao").css("margin-top",step);
+					}
+					$(".slide-gonggao").animate({
+						"margin-top":step
+					});
+				},2000);
+				//鼠标滑入停止计时器
+				$("li",".slide-gonggao").mouseenter(function(){
+					clearInterval(timer);
+				});
+				$("li",".slide-gonggao").mouseleave(function(){
+					timer = setInterval(function(){
+						step-=li_height;
+						if(step == -li_height*li_num){
+							step=0;
+							$(".slide-gonggao").css("margin-top",step);
+						}
+						$(".slide-gonggao").animate({
+							"margin-top":step
+						});
+					},2000);
+				});
+			},
+			verify:function(){
+				//用户信息判断
+				$.cookie.json = true;
+				var user = $.cookie("login-user");
+				if (user){
+					$(".loginPic-img").attr("src","/img/147747606341681858.JPEG");
+					$(".login-register").html(`hi~${user}`);
+				}
 			}
 		}
 		new Index();
@@ -343,7 +389,7 @@ require(["config"],function(){
 				this.nextIndex = index;
 				// 调用 move() 切换
 				this.move();
-			}
+			},
 		}
 		new Banner();
 	})

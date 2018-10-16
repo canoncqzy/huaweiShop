@@ -5,6 +5,7 @@
 		<title></title>
 		<link rel="icon" href="/img/logo-icon.jpg" type="image/x-icon"/>
 		<link rel="stylesheet" type="text/css" href="/css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/rightNav.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/detail.css"/>
 	</head>
 	<body>
@@ -13,110 +14,113 @@
 		<!--content-->
 		<div class="content">
 			<div class="container">
-				<div class="title content-container-title">
-					<a href="/index.html">首页</a>
-				</div>
-				<div class="zoom">
-					<div class="middle-pic"></div>
-					<div class="box">
-						<div class="slide-box">
-							<ul>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</div>
-						<div class="pre">&lt;</div>
-						<div class="next">&gt;</div>
-					</div>
-				</div>
-				<div class="details">
-					<p class="title details-title">荣耀畅玩8C 全网通标配版 4GB+32GB（极光蓝）</p>
-					<p class="advertise"><a href="#">订金预订享更多权益！4GB+32GB版送AM115半入耳式耳机！</a></p>
-					<div class="info">
-						<div class="price">
-							<label>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
-							<span class="price-span"></span>
-						</div>
-						<div class="sale">
-							<label>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</label>
-							<div class="wrap">
-								<p><span>整点赠送</span>10点/16点/20点 整点下单前100名赠送蓝牙耳机</p>
-								<p><span>整点赠送</span>10点/16点/20点 整点下单前100名赠送蓝牙耳机</p>
-								<p><span>整点赠送</span>10点/16点/20点 整点下单前100名赠送蓝牙耳机</p>
-							</div>
-						</div>
-					</div>
-					<div class="service">
-						<p class="description"><label>服务说明</label><span>已满48元已免运费</span><span>由华为商城负责发送，并提供售后服务</span></p>
-						<p class="number"><label>商品编码</label><span>2601010026714</span></p>
-					</div>
-					<div class="selectColor">
-						<label>选择颜色</label>
-						<div class="colors">
-							<p><i></i><span>亮黑色</span></p>
-							<p><i></i><span>亮黑色</span></p>
-							<p><i></i><span>亮黑色</span></p>
-							<p><i></i><span>亮黑色</span></p>
-							<p><i></i><span>亮黑色</span></p>
-							<p><i></i><span>亮黑色</span></p>
-						</div>
-					</div>
-					<div class="selectVersion">
-						<label>选择版本</label>
-						<div class="versions">
-							<p>全网通 6GB+64GB</p>
-							<p>全网通 6GB+128GB</p>
-						</div>
-					</div>
-					<div class="selectCombo">
-						<label>选择套餐</label>
-						<div class="combos">
-							<p>官方标配</p>
-						</div>
-					</div>
-					<div class="moreService">
-						<label>增值业务</label>
-						<div class="more">
-							<p>无增值业务</p>
-							<p>P20系列礼品包装服务</p>
-						</div>
-					</div>
-					<div class="securityService">
-						<label>保障服务</label>
-						<div class="sec-services">
-							<p>延长服务宝1年￥258</p>
-							<p>碎屏(含后盖)服务宝1年￥199</p>
-						</div>
-					</div>
-					<div class="selected">
-						<label>已选商品：</label>
-						<p><span>极光色/</span><span>极光色/</span><span>极光色/</span><span>极光色/</span></p>
-					</div>
-					<div class="bottom">
-						<label>
-							<div class="num-box">
-								<input type="text" value="1"/>
-								<i>+</i>
-								<i>-</i>
-							</div>
-						</label>
-						<a href="javascript:void(0);" class="addtocart">加入购物车</a>
-						<a href="javascript:void(0);" class="addtopay">立即下单</a>
-					</div>
-				</div>
 			</div>
 		</div>
+		<!--模版-->
+		<script type="text/html" id="detail-template">
+			<div class="title content-container-title">
+				<a href="/index.html">首页</a>
+			</div>
+			<div class="zoom">
+				<div class="middle-pic">
+					<img src="{{data.img[0].middle}}" data-zoom-image="{{data.img[0].big}}" class="middle-zoom"/>
+				</div>
+				<div class="box">
+					<div class="slide-box">
+						<ul class="gal1" style="position: absolute;">
+							{{each data.img curr}}
+							<li data-image="{{curr.middle}}" data-zoom-image="{{curr.big}}">
+								<img class="small-pic" src="{{curr.small}}"/>
+							</li>
+							{{/each}}
+						</ul>
+					</div>
+					<div class="pre">&lt;</div>
+					<div class="next">&gt;</div>
+				</div>
+			</div>
+			<div class="details">
+				<p class="title details-title"></p>
+				<p class="advertise"><a href="#">{{advertise}}</a></p>
+				<div class="info">
+					<div class="price">
+						<label>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
+						<span class="price-span"></span>
+					</div>
+					<div class="sale">
+						<label>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</label>
+						<div class="wrap">
+							{{each sale curr}}
+							<p><span>{{curr.title}}</span>{{curr.des}}</p>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+				<div class="service">
+					<p class="description"><label>服务说明</label><span>已满48元已免运费</span><span>由华为商城负责发送，并提供售后服务</span></p>
+					<p class="number"><label>商品编码</label><span class="product-code">{{code}}</span></p>
+				</div>
+				<div class="selectColor">
+					<label>选择颜色</label>
+					<div class="colors">
+						{{each color curr}}
+						<p class="selectProduct change-prod-code" style="border-color: #CA141D"><i><img src="{{curr.img}}"/></i><span>{{curr.des}}</span></p>
+						{{/each}}
+					</div>
+				</div>
+				<div class="selectVersion">
+					<label>选择版本</label>
+					<div class="versions">
+						{{each version curr}}
+						<p class="selectProduct" style="border-color: #CA141D">{{curr.version}}</p>
+						{{/each}}
+					</div>
+				</div>
+				<div class="selectCombo">
+					<label>选择套餐</label>
+					<div class="combos">
+						<p class="selectProduct change-prod-code" style="border-color: #CA141D">官方标配</p>
+						{{each taocan curr}}
+						<p class="selectProduct change-prod-code">{{curr.taocan}}</p>
+						{{/each}}
+					</div>
+				</div>
+				<div class="moreService">
+					<label>增值业务</label>
+					<div class="more">
+						<p class="selectProduct" style="border-color: #CA141D">无增值业务</p>
+						<p class="selectProduct">{{business}}</p>
+					</div>
+				</div>
+				<div class="securityService">
+					<label>保障服务</label>
+					<div class="sec-services">
+						{{each security curr}}
+						<p class="selectProduct" style="border-color: #CA141D">{{curr.service}}</p>
+						{{/each}}
+					</div>
+				</div>
+				<div class="selected">
+					<label>已选商品：</label>
+					<p class="selected-container"></p>
+				</div>
+				<div class="bottom">
+					<label>
+						<div class="num-box">
+							<input type="text" value="1"/>
+							<i class="increment">+</i>
+							<i class="decrement">-</i>
+						</div>
+					</label>
+					<a href="/html/cart.html" class="addtocart">加入购物车</a>
+					<a href="javascript:void(0);" class="addtopay">立即下单</a>
+				</div>
+			</div>
+		</script>
 		<!--footer-->
 		<footer></footer>
+		<!--rightNav-->
+		<div class="rightNav"></div>
 		<script src="/lib/requirejs/require.js" data-main = "/js/detail" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

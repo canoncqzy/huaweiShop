@@ -1,5 +1,5 @@
 require(["config"],function(){
-	require(["jquery","template","header","cookie"],function($,template){
+	require(["jquery","template","header","cookie","rightNav"],function($,template){
 		function List(){
 			this.loadList();
 		}
@@ -60,11 +60,10 @@ require(["config"],function(){
 			handleBoxClick:function(){
 				var prod_info = {
 					title:$("a:last",".title").text(),
-					name:$(this).children(".name").text(),
-					price:$(this).children(".price").text()
+					name:$(this).siblings(".name").text(),
+					price:$(this).find(".price").text()
 				};
 				$.cookie("prod_info", prod_info, {expires: 10, path: "/"});
-				
 				window.open("/html/detail.html");
 			}
 		});

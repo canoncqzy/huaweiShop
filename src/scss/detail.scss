@@ -3,8 +3,8 @@
 .header{background: #FFFFFF;}
 $width:1200px;
 $borderColor:#dddddd;
+$border:#ca141d;
 .content{
-    $border:#ca141d;
     border-top: 5px solid #e9e9e9;
     background: #FFFFFF;
     padding-bottom: 50px;
@@ -32,7 +32,6 @@ $borderColor:#dddddd;
             .middle-pic{
                 width: 450px;
                 height: 450px;
-                background: red;
             }
             .box{
                 position: relative;
@@ -41,16 +40,18 @@ $borderColor:#dddddd;
                     height: 100px;
                     overflow: hidden;
                     margin-left: 35px;
+                    position: relative;
                     ul {
                         width: 1000px;
                         li{
                             float: left;
                             width: 70px;
                             height: 70px;
-                            border: 1px solid $border;
                             margin-top: 15px;
                             cursor: pointer;
                             margin-left: 4px;
+                            border: 2px solid #ffffff;
+                            &:first-of-type{border-color: #CCCCCC;}
                         }
                     }
                 }
@@ -88,6 +89,8 @@ $borderColor:#dddddd;
             .title{
                 font-size: 20px;
                 color: #3a3a3a;
+                height: 70px;
+                line-height: 40px;
             }
             .advertise{
                 height: 48px;
@@ -151,7 +154,7 @@ $borderColor:#dddddd;
             }
             .selectColor{
                 height: 110px;
-                padding: 10px 0;
+                padding: 2px 0;
                 label{
                     @include details-label;
                     float: left;
@@ -168,7 +171,6 @@ $borderColor:#dddddd;
                         i{
                             width: 30px;
                             height: 25px;
-                            background: red;
                             float: left;
                         }
                         span{
@@ -207,7 +209,7 @@ $borderColor:#dddddd;
                 }
             }
             .moreService{
-                margin-top: 5px;
+                margin-top: 3px;
                 height: 45px;
                 label{
                     @include details-label;
@@ -221,7 +223,7 @@ $borderColor:#dddddd;
                 }
             }
             .securityService{
-                margin-top: 5px;
+                margin-top: 3px;
                 height: 45px;
                 label{
                     @include details-label;
@@ -235,7 +237,7 @@ $borderColor:#dddddd;
                 }
             }
             .selected{
-                margin-top: 5px;
+                margin-top: 3px;
                 label{
                     float: left;
                     height: 20px;
@@ -245,6 +247,7 @@ $borderColor:#dddddd;
                 p{
                     height: 20px;
                     line-height: 20px;
+                    color: #CA141D;
                 }
             }
             .bottom{
@@ -261,6 +264,7 @@ $borderColor:#dddddd;
                             width: 40px;
                             float: left;
                             text-align: center;
+                            outline: none;
                         }
                         i{
                             float: right;
