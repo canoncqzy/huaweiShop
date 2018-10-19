@@ -25,20 +25,12 @@
 		<!--模版1-->
 		<script type="text/html" id="new-address-template">
 			{{each address addr}}
-			<div class="created-address">
+			<div class="created-address removeAddress">
 				<p class="name-phone"><span>{{addr.consignee}}</span><span>{{addr.phoneNumber}}</span></p>
 				<p class="city"><span>{{addr.province}}</span><span>{{addr.city}}</span><span>{{addr.district}}</span><span>{{addr.addressDetails}}</span></p>
 				<p class="oprator"><a href="javascript:void(0);" class="delete-address">删除</a><a href="javascript:void(0);">编辑</a></p>
 			</div>
 			{{/each}}
-		</script>
-		<!--模版2-->
-		<script type="text/html" id="addToAddressBox-template">
-			<div class="created-address">
-				<p class="name-phone"><span>{{consignee}}</span><span>{{phoneNumber}}</span></p>
-				<p class="city"><span>{{province}}</span><span>{{city}}</span><span>{{district}}</span><span>{{addressDetails}}</span></p>
-				<p class="oprator"><a href="javascript:void(0);">删除</a><a href="javascript:void(0);">编辑</a></p>
-			</div>
 		</script>
 		<!--mask-->
 		<div class="mask">
@@ -73,7 +65,7 @@
 		</div>
 		<!--模版-->
 		<script type="text/html" id="products-list-template">
-			{{each products prod}}
+			{{each selectedProd prod}}
 			<ul class="prod">
 				<li class="img"><img src="{{prod.img}}"/></li>
 				<li class="title">{{prod.title}}</li>

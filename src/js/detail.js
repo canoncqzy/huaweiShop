@@ -2,14 +2,27 @@ require(["config"],function(){
 	require(["jquery","template","header","cookie","zoom","rightNav"],function($,template){
 		function Detail(){
 			this.load();
-			
 			this.setLeft= 0;
+			this.toCeiling();
 		}
 		$.extend(Detail.prototype,{
 			load:function(){
 				//渲染详情数据
 				$.ajax("http://rap2api.taobao.org/app/mock/86514/detail")
 					.done($.proxy(this.handleData,this));
+				//加载详情图片
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/moredetails")
+					.done(function(data){
+						data = data.res_body;
+						var html = template("detailPic-template",data);
+						$(".detailPic").append(html);
+					});
+				//加载关联产品
+				$.ajax("http://rap2api.taobao.org/app/mock/86514/connectProduct")
+					.done(function(data){
+						var html = template("connectProducts-template",data);
+						$(".connectProducts-ul").append(html);
+					});
 			},
 			handleData:function(data){
 				// 获取使用数据
@@ -194,9 +207,22 @@ require(["config"],function(){
 				});
 				if (!has) // 未选购
 					products.push(currProduct);
-
 				// 保存购物车：存回cookie
 				$.cookie("cart", products, {expires: 10, path:"/"});
+				
+				//获取当前商品标题
+				var pt = $(".details-title").text();
+				//显示提示
+				$(".mask").show();
+				//提示框显示title
+				$(".prod-title",".success").text(pt+"已成功加入购物车！");
+				//关闭模态框
+				$("span",".close").click(function(){$(".mask").hide();});
+				//再看看
+				$(".stayHere").click(function(){$(".mask").hide();});
+				//去结算
+				$(".gotopay").click(function(){location="/html/cart.html"});
+				return false;
 			},
 			addToPayHandler:function(){
 				//用户信息判断
@@ -207,6 +233,17 @@ require(["config"],function(){
 					location = "/html/login.html";
 					return;
 				}else{
+					//获取当商品信息
+					var selectedProd = [];//存储选中的商品
+					var cp = {
+						img: $(($(".small-pic")[0])).attr("src"),
+						title:$(".details-title").text(),
+						price:$(".price-span").text().slice(1),
+						amount:$(".num-box-input").val()
+					}
+					selectedProd.push(cp);
+					//存入cookie
+					$.cookie("selectedProd",selectedProd,{expires:10, path:"/"});
 					location = "/html/confirm.html";
 				}
 			},
@@ -237,6 +274,71 @@ require(["config"],function(){
 					$(".gal1").animate({left:this.setLeft});
 				}
 			},
+			//吸顶效果
+			toCeiling:function(){
+				$(window).scroll(function(){
+					var top = $(window).scrollTop();
+					//判断什么时候显示吸顶效果
+					if(top>=$(".moreServices").offset().top){
+						$(".ceiling").show();
+					}else{
+						$(".ceiling").hide();
+					}
+				});
+				//点击设置选中样式
+				$("ul",".ceiling").on("click","a",function(){
+					$(this).css({
+						"color":"#ca141d",
+						"border-bottom":"2px solid #ca141d"
+					});
+					//未点击的设为未选择样式
+					$(this).parent("li").siblings().children("a").css({
+						"color":"#a4a4a4",
+						"border-bottom":"none"
+					});
+				});
+				$(window).scroll(function(){
+					var _productSize = $("#productSize").offset().top,//获取产品参数在当前视口的相对高度
+						_package = $("#package").offset().top,//获取包装在当前视口的相对高度
+						_commend = $("#commend").offset().top,//获取评论在当前视口的相对高度
+						_top = $(this).scrollTop();//获取相对滚动条顶部位置
+					//在产品参数和包装之间显示吸顶的产品参数样式
+					if(_top>=_productSize&&_top<_package){
+						//产品参数为红色
+						$(".productSize").css({
+							"color":"#ca141d",
+							"border-bottom":"2px solid #ca141d"
+						});
+						//其他为灰色
+						$(".productSize").parent("li").siblings().children("a").css({
+							"color":"#a4a4a4",
+							"border-bottom":"none"
+						});
+					}else if(_top>=_package&&_top<_commend){//在产品包装和评论之间显示吸顶的产品包装样式
+						//产品包装为红色
+						$(".package").css({
+							"color":"#ca141d",
+							"border-bottom":"2px solid #ca141d"
+						});
+						//其他为灰色
+						$(".package").parent("li").siblings().children("a").css({
+							"color":"#a4a4a4",
+							"border-bottom":"none"
+						});
+					}else if(_top>=_commend){//显示吸顶的评论样式
+						//评论为红色
+						$(".commend").css({
+							"color":"#ca141d",
+							"border-bottom":"2px solid #ca141d"
+						});
+						//其他为灰色
+						$(".commend").parent("li").siblings().children("a").css({
+							"color":"#a4a4a4",
+							"border-bottom":"none"
+						});
+					}
+				});
+			}
 		})
 		new Detail();
 	})

@@ -24,6 +24,19 @@ define(["jquery","cookie"],function($){
 			$(".select>input:first").keyup(this.searchHandler);
 			//为搜索提示绑定点击事件
 			$(".suggest").on("click","div",this.suggestHandler);
+			//我的订单权限判断
+			$(".index-confirm").click(function(){
+				//用户信息判断
+				$.cookie.json = true;
+				var user = $.cookie("login-user");
+				if (user){
+					location = "/html/confirm.html"
+				}else{
+					alert("请登录后查看订单");
+					location = "/html/login.html";
+				}
+				return false;
+			});
 		},
 		searchHandler:function(){
 			var word = $(this).val(),

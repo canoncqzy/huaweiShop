@@ -1,16 +1,23 @@
 require(["config"],function(){
 	require(["jquery","template","header","carousel","cookie","rightNav"],function($,template){
 		function Index(){
+			//显示导航窗口
 			this.showNavWindow();
+			//加载banner图
 			this.loadBanner();
+			//加载产品
 			this.loadProducts();
+			//加载推荐产品			
 			this.loadRecommend();
-			this.toTop();
+			//身份验证
 			this.verify();
+			
+			
 			this.setLeft= 0;
 		}
 		Index.prototype={
 			constructor:Index,
+			//显示导航窗口
 			showNavWindow:function(){
 				//绑定监听事件
 				this.addListener();
@@ -79,10 +86,10 @@ require(["config"],function(){
 				});
 			},
 			navClickHandler:function(){
-				var _id = $(this).parents(".box").siblings(".id").text(),
-					arrId = [],
-					arrTitles = [],
-					str = "#nav-window"+_id;
+				var _id = $(this).parents(".box").siblings(".id").text(),//获取导航菜单的隐藏id
+					arrId = [],//存id的数组
+					arrTitles = [],//存标题的数组
+					str = "#nav-window"+_id;//窗口的id名称
 					//当前点击a标签的文本
 					arrTitles.push($(this).text());
 					//获取标题
@@ -93,17 +100,20 @@ require(["config"],function(){
 				});
 				//id数组
 				arrId.push(_id);
+				//存入cookie
 				$.cookie.json = true;
 				$.cookie("id", arrId, {expires: 10, path: "/"});
 				$.cookie("titles", arrTitles, {expires: 10, path: "/"});
 			},
+			//向后翻
 			nextPage:function(e){
+				//事件源
 				var src = e.target;
-				var li_num = $(src).siblings("ul").find("li").length,
-					li_width = $(src).siblings("ul").find("li").width(),
-					box_width = $(src).parent(".box").width(),
-					ul_left = $(src).siblings("ul").position().left,
-					_cursor = $(src).siblings(".backwards").css("cursor");
+				var li_num = $(src).siblings("ul").find("li").length,//li的数量
+					li_width = $(src).siblings("ul").find("li").width(),//li的宽度
+					box_width = $(src).parent(".box").width(),//盒子宽度
+					ul_left = $(src).siblings("ul").position().left,//ul left定位
+					_cursor = $(src).siblings(".backwards").css("cursor");//cursor属性
 				//设置ul长度
 				$(src).siblings("ul").css("width",li_num*li_width);
 				if($(src).css("cursor")!="not-allowed"){
@@ -126,6 +136,7 @@ require(["config"],function(){
 					}
 				}
 			},
+			//向前翻
 			frontPage:function(e){
 				var src = e.target;
 				var li_num = $(src).siblings("ul").find("li").length,
@@ -155,6 +166,7 @@ require(["config"],function(){
 					}
 				}
 			},
+			//加载banner图
 			loadBanner:function(){
 				$(".advertise-container").carousel({
 					imgs:[
@@ -173,6 +185,7 @@ require(["config"],function(){
 				//轮播公告
 				this.slideGongGao();
 			},
+			//加载推荐商品
 			loadRecommend:function(){
 				$.ajax("http://rap2api.taobao.org/app/mock/86514/competitiveRecommend")
 					.done($.proxy(this.handleCompetitiveData, this));
@@ -254,16 +267,6 @@ require(["config"],function(){
 			brandPartsData:function(data){
 				var html = template("brandParts-template", data);
 				$(".brandParts-ul").append(html);
-			},
-			toTop:function(){
-				$(window).scroll(function(){
-					var top = $(window).scrollTop();
-					if(top>=1000){
-						$("a",".toTop").show()
-					}else{
-						$("a",".toTop").hide();
-					}
-				});
 			},
 			slideGongGao:function(){
 				var step = 0;

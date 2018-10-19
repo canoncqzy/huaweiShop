@@ -205,7 +205,7 @@
                         margin-left: 22px;
                         margin-top: 5px;
                         float: left;
-                        img{width: 60px;height: 60px;}
+                        img{width: 60px;height: 60px;border-radius: 50%;}
                     }
                     .wellcome{
                         width: 160px;
@@ -634,17 +634,3 @@
 	cursor: not-allowed;
 }
 .watch-box .container .box .backwards:hover{opacity: 1;}
-/*toTop*/
-.toTop a{
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	color: #FFFFFF;
-	text-align: center;
-	line-height: 40px;
-	position: fixed;
-	bottom: 95px;
-	right: 10px;
-	display: none;
-	background:#474747 url(/img/titop.jpg) no-repeat center;
-}

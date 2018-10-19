@@ -7,21 +7,32 @@ define(["jquery","cookie"],function($){
 		constructor:rightNav,
 		load:function(){
 			$(".rightNav").load("/html/include/rightNav.html",function(){
-				$(".rightNav").mouseenter(function(){
-					$(".rightNav").animate({
+				$(".rightNav-div").mouseenter(function(){
+					$(".rightNav").stop().animate({
 						width:180,
 						height:80
 					});
 				});
-				$(".rightNav").mouseleave(function(){
-					$(".rightNav").animate({
+				$(".rightNav-div").mouseleave(function(){
+					$(".rightNav").stop().animate({
 						width:60,
 						height:40,
 						bottom:10
 					});
 				});
 			});
+			this.toTop();
 		},
+		toTop:function(){
+			$(window).scroll(function(){
+				var top = $(window).scrollTop();
+				if(top>=1000){
+					$("a",".toTop").show();
+				}else{
+					$("a",".toTop").hide();
+				}
+			});
+		}
 	}
 	new rightNav();
 });

@@ -64,7 +64,7 @@
 					<label>选择颜色</label>
 					<div class="colors">
 						{{each color curr}}
-						<p class="selectProduct change-prod-code" style="border-color: #CA141D"><i><img src="{{curr.img}}"/></i><span>{{curr.des}}</span></p>
+						<p class="selectProduct change-prod-code" style="border-color: #CA141D"><i><img class="" src="{{curr.img}}"/></i><span>{{curr.des}}</span></p>
 						{{/each}}
 					</div>
 				</div>
@@ -107,15 +107,102 @@
 				<div class="bottom">
 					<label>
 						<div class="num-box">
-							<input type="text" value="1"/>
+							<input class="num-box-input" type="text" value="1"/>
 							<i class="increment">+</i>
 							<i class="decrement">-</i>
 						</div>
 					</label>
-					<a href="/html/cart.html" class="addtocart">加入购物车</a>
+					<a href="#" class="addtocart">加入购物车</a>
 					<a href="javascript:void(0);" class="addtopay">立即下单</a>
 				</div>
 			</div>
+		</script>
+		<!--模态框提示加入成功-->
+		<div class="mask">
+			<div class="success">
+				<div class="close"><span></span></div>
+				<div class="title">
+					<span></span>
+					<p class="prod-title"></p>
+				</div>
+				<div class="stay">
+					<p class="stayHere">再逛逛</p>
+					<p class="gotopay">去结算</p>
+				</div>
+			</div>
+		</div>
+		<!--connectProducts-->
+		<div class="connectProducts">
+			<div class="container">
+				<h2>-关联商品-</h2>
+				<ul class="connectProducts-ul"></ul>
+			</div>
+		</div>
+		<script type="text/html" id="connectProducts-template">
+		{{each res_body prod}}
+			<li>
+				<i><img src="{{prod.img}}"/></i>
+				<div>
+					<p>{{prod.title}}</p>
+					<span>￥{{prod.price}}</span>
+				</div>
+			</li>
+		{{/each}}
+		</script>
+		<!--moerServices-->
+		<div class="moreServices">
+			<div class="container">
+				<ul>
+					<li><a href="#productDetailes">商品详情</a></li>
+					<li><a href="#productSize">规格参数</a></li>
+					<li><a href="#package">包装与售后</a></li>
+					<li><a href="#commend">用户评价(<span>27313</span>)</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<!--吸顶-->
+		<div class="ceiling">
+			<div class="container">
+				<ul>
+					<li><a href="#productDetailes" class="productDetaile">商品详情</a></li>
+					<li><a href="#productSize" class="productSize">规格参数</a></li>
+					<li><a href="#package" class="package">包装与售后</a></li>
+					<li><a href="#commend" class="commend">用户评价(<span>27313</span>)</a></li>
+				</ul>
+				</ul>
+				<a href="/html/cart.html" class="addtocart">加入购物车</a>
+			</div>
+		</div>
+		
+		<!--detailPic-->
+		<div class="detailPic" id="productDetailes"></div>
+		<!--规格参数-->
+		<div class="size" id="productSize">
+			<div class="container">
+				<h2>规格参数</h2>
+			</div>
+		</div>
+		<div class="detailPic"></div>
+		<!--包装与售后-->
+		<div class="size" id="package">
+			<div class="container">
+				<h2>包装与售后</h2>
+			</div>
+		</div>
+		<div class="detailPic"></div>
+		<!--用户评价-->
+		<div class="size" id="commend">
+			<div class="container">
+				<h2>用户评价</h2>
+			</div>
+		</div>
+		<div class="detailPic"></div>
+		<!--templatemob-->
+		<script type="text/html" id="detailPic-template">
+			{{each data pic}}
+			<p><img src="{{pic.img}}"/></p>
+			{{/each}}
 		</script>
 		<!--footer-->
 		<footer></footer>

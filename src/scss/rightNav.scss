@@ -47,3 +47,18 @@
     width: 17px;
     background: url(/img/icon-common.png) no-repeat -134px 0px;
 }
+
+/*toTop*/
+.toTop a{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 40px;
+    position: fixed;
+    bottom: 95px;
+    right: 10px;
+    display: none;
+    background:#474747 url(/img/titop.jpg) no-repeat center;
+}

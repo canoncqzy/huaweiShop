@@ -18,17 +18,20 @@ require(["config"],function(){
 				$("footer").load("/html/include/footer.html");
 				//从cookie中读出购物车数据
 				$.cookie.json = true;
-				var products = $.cookie("cart");
+				var selectedProd = $.cookie("selectedProd");
+				
 				//渲染模版
-				var data = {products},
+				var data = {selectedProd},
 					html = template("products-list-template",data);
 				$(".products-box-list").html(html);
+				
 				//动态设置高度
 				$(".info",".box").css("height",$(".box").css("height"));
+				
 				//计算合计
 				var sum = 0;
-				$(products).each(function(index,curr){
-					sum += curr.price
+				$(selectedProd).each(function(index,curr){
+					sum += Number(curr.price)*curr.amount;
 				});
 				$(".totl-price").text("￥"+sum.toFixed(2));
 				//积分
@@ -38,8 +41,8 @@ require(["config"],function(){
 			loadConsigneeAddress:function(){
 				// 从 cookie 中读取以有的地址数据
 				$.cookie.json = true; // 配置自动在JS值与JSON文本之间相互转换
-				var address = $.cookie("address"),
-					data = {address},
+				var address = $.cookie("address");
+				var	data = {address},
 					html = template("new-address-template",data);
 				$(".add-new-address").prepend(html);
 			},
@@ -52,6 +55,10 @@ require(["config"],function(){
 				$(".close-mask").click(function(){$(".mask").hide();});
 				//删除收货地址
 				$(".created-address").on("click",".delete-address",$.proxy(this.deleteAddressHandler,this));
+				$(".created-address").click(function(){
+					$(this).css("border","2px dashed #CA141D");
+					$(this).siblings().css("border-color","#CCCCCC");
+				});
 			},
 			//添加收货地址
 			addAddressHandler:function(e){
@@ -71,8 +78,8 @@ require(["config"],function(){
 			},
 			//加载省份
 			loadProvice:function(){
-				var url1 = "http://route.showapi.com/1149-1?showapi_appid=29550&showapi_sign=fe01daee5a6a400c91e9f8523813fc61&level=1&page=1&maxSize=20",
-					url2 = "http://route.showapi.com/1149-1?showapi_appid=29550&showapi_sign=fe01daee5a6a400c91e9f8523813fc61&level=1&page=2&maxSize=20";
+				var url1 = "http://route.showapi.com/1149-1?showapi_appid=75561&showapi_sign=d3ca4cda5ed4484cae942ada741230f4&level=1&page=1&maxSize=20",
+					url2 = "http://route.showapi.com/1149-1?showapi_appid=75561&showapi_sign=d3ca4cda5ed4484cae942ada741230f4&level=1&page=2&maxSize=20";
 				$.when($.ajax(url1),$.ajax(url2))
 					.done(function(data1,data2){
 							var html = '<option value="-1">请选择省份</option>';
@@ -89,7 +96,7 @@ require(["config"],function(){
 				// 获取选择的省份 id
 				var id = $(".province-select").val();
 				// 根据 id 查询城市
-				var url = `http://route.showapi.com/1149-2?showapi_appid=29550&showapi_sign=fe01daee5a6a400c91e9f8523813fc61&parentId=${id}`;
+				var url = `http://route.showapi.com/1149-2?showapi_appid=75561&showapi_sign=d3ca4cda5ed4484cae942ada741230f4&parentId=${id}`;
 				$.ajax(url).done(function(data) {
 					var html = '<option value="-1">请选择城市</option>';
 					data.showapi_res_body.data.forEach(function(curr) {
@@ -103,7 +110,7 @@ require(["config"],function(){
 				// 获取选择的城市 id
 				var id = $(".city-select").val();
 				// 根据 id 查询区县
-				var url = `http://route.showapi.com/1149-2?showapi_appid=29550&showapi_sign=fe01daee5a6a400c91e9f8523813fc61&parentId=${id}`;
+				var url = `http://route.showapi.com/1149-2?showapi_appid=75561&showapi_sign=d3ca4cda5ed4484cae942ada741230f4&parentId=${id}`;
 				$.ajax(url).done(function(data) {
 					var html = '<option value="-1">请选择区县</option>';
 					data.showapi_res_body.data.forEach(function(curr) {
@@ -128,11 +135,16 @@ require(["config"],function(){
 				address.push(currAddress);
 				// 保存收货地址
 				$.cookie("address", address, {expires: 10, path:"/"});
-				//将新增地址信息显示到页面
-				//模版
-				var html = template("addToAddressBox-template",currAddress);
-				$(".add-new-address").prepend(html);
-				console.log(currAddress);
+				//先删除收货地址dom
+				$(".removeAddress").remove();
+				//重新加载地址
+				this.loadConsigneeAddress();
+				//监听事件
+				$(".created-address").on("click",".delete-address",$.proxy(this.deleteAddressHandler,this));
+				$(".created-address").click(function(){
+					$(this).css("border","2px dashed #CA141D");
+					$(this).siblings().css("border-color","#CCCCCC");
+				});
 				//关闭模态框
 				$(".mask").hide();
 				//还原初始数据

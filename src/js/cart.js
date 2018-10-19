@@ -143,11 +143,24 @@ require(["config"],function(){
 				$(".ck_prod").prop("checked", status);
 				//获取购物车主体中选中的复选框个数
 				var count = $(".ck_prod:checked",".prod-list").length;
-				console.log(count);
 				//显示已选商品数量
 				$(".selected-product-num").text(count);
 				//计算合计
 				this.calcTotal();
+				//获取选中商品信息
+				var selectedProd = [];//存储选中的商品
+				$(".ck_prod:checked",".prod-list").each(function(index,curr){
+					var cu = {
+						img: $(curr).parent("span").siblings("ul").find("img").attr("src"),
+						title:$(curr).parent("span").siblings("ul").find(".title-li").text(),
+						price:$(curr).parent("span").siblings("ul").find(".price-li").text(),
+						amount:$(curr).parent("span").siblings("ul").find(".amount-input").val()
+					}
+					selectedProd.push(cu);
+				});
+				console.log(selectedProd);
+				//存入cookie
+				$.cookie("selectedProd",selectedProd,{expires:10, path:"/"});
 			},
 			//部分选择
 			ckProdHandler:function(e){
@@ -160,6 +173,20 @@ require(["config"],function(){
 				$(".selected-product-num").text(count);
 				//计算合计
 				this.calcTotal();
+				//获取选中商品信息
+				var selectedProd = [];//存储选中的id
+				$(".ck_prod:checked",".prod-list").each(function(index,curr){
+					var cu = {
+						img: $(curr).parent("span").siblings("ul").find("img").attr("src"),
+						title:$(curr).parent("span").siblings("ul").find(".title-li").text(),
+						price:$(curr).parent("span").siblings("ul").find(".price-li").text(),
+						amount:$(curr).parent("span").siblings("ul").find(".amount-input").val()
+					}
+					selectedProd.push(cu);
+				});
+				console.log(selectedProd);
+				//存入cookie
+				$.cookie("selectedProd",selectedProd,{expires:10, path:"/"});
 			},
 			//计算合计金额
 			calcTotal:function(){
@@ -167,7 +194,7 @@ require(["config"],function(){
 				$(".ck_prod:checked").each(function(index,curr){
 					sum += Number($(curr).parent("span").siblings("ul").find(".sub").text().slice(1));
 				});
-				$(".calc-total-price").text("￥"+sum);
+				$(".calc-total-price").text("￥"+sum.toFixed(2));
 			},
 			nextPage:function(e){
 				var src = e.target;
@@ -235,8 +262,12 @@ require(["config"],function(){
 					alert("请先登录,立即跳转到登录界面");
 					location = "/html/login.html";
 					return;
+				}else{
+					if(($(".ck_prod:checked",".prod-list").length)>0)
+						location = "/html/confirm.html";
+					else
+						alert("未选商品！");
 				}
-				location = "/html/confirm.html";
 			},
 			//验证身份信息
 			verify:function(){
@@ -247,13 +278,11 @@ require(["config"],function(){
 					var html1 = `<a href="#">用户:${user}</a>`,
 						html2 = `<a href="#" class="logout">退出</a>`;
 					
-					console.log($(".header-login"));
 					$(".header-login").html(html1);
 					$(".header-register").html(html2);
 				}
 				//退出
 				$(".logout").click(function(){
-					console.log("a");
 					$.removeCookie("login-user",{path:"/"});
 					location = "/html/cart.html";
 					return false;
