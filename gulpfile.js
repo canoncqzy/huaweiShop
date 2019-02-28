@@ -56,7 +56,8 @@ gulp.task("copy", ["copy-img", "copy-lib"]);
 gulp.task("webserver", ()=>{
 	connect.server({
 	    root: 'dist',
-	    livereload: true
+		livereload: true,
+		port: 8888
 	});
 });
 
